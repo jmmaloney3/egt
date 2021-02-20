@@ -8,6 +8,7 @@ Created on Sat Dec 12 23:33 2020
 """
 
 import agent
+import population
 import strategy
 
 class SimEngine:
@@ -17,21 +18,18 @@ class SimEngine:
     '''
     def __init__(self, game, agents):
         self.__game = game
-        self.__agents = agents
+        self.__population = population.Population(agents)
         self.__total_payouts = 0
 
     '''
     Play the matches for one time period.
     '''
     def play_matches(self):
-        # need a configurable way to select agents for the matches
-        # TEMP: each agent plays against every other agent exactly once
-        for i in range(len(self.__agents)):
-            for j in range(i+1, len(self.__agents)):
-                self.__total_payouts += self.play_match(self.__agents[i], self.__agents[j])
+        for pair in self.__population.matches():
+            self.__total_payouts += self.play_match(pair[0], pair[1])
 
-                s = '({0:3d}, {1:3d}): | {2:3d}'.format(i, j, self.__total_payouts)
-                print(s)
+            s = '({0}, {1}): | {2:3d}'.format(pair[0], pair[1], self.__total_payouts)
+            print(s)
 
         # return the total payouts for use by the sim engine
         return self.__total_payouts
