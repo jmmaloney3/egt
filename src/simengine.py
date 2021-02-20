@@ -22,6 +22,26 @@ class SimEngine:
         self.__total_payouts = 0
 
     '''
+    Run the simulation for the specified number of generations.
+    '''
+    def run(self, gens=100):
+        for g in range(gens):
+            s = 'start generation: {0:5d}'.format(g)
+            print(s)
+
+            # play matches for this generation
+            self.play_matches()
+
+            # evolve population
+            # -- TBD
+
+            # reset engine for next generation
+            self.reset()
+
+            s = '  end generation: {0:5d}'.format(g)
+            print(s)
+
+    '''
     Play the matches for one time period.
     '''
     def play_matches(self):
@@ -57,5 +77,4 @@ class SimEngine:
     '''
     def reset(self):
         self.__total_payouts = 0
-        for a in self.__agents:
-            a.reset()
+        self.__population.reset()
