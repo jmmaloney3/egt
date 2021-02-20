@@ -33,7 +33,7 @@ def main():
 
     # create the simulation engine & play matches
     sim = simengine.SimEngine(PD, np.concatenate((cagents,dagents)))
-    print(sim.play_matches())
+    sim.run()
 
 
     print(PD)
