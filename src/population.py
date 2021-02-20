@@ -29,6 +29,15 @@ class Population:
     the grid.
     '''
     def matches(self):
+        # need a configurable way to select agents for the matches
+        # TEMP: each agent plays against every other agent exactly once
         for i in range(len(self.__agents)):
             for j in range(i+1, len(self.__agents)):
                 yield (self.__agents[i], self.__agents[j])
+
+    '''
+    Reset the agent population to prepare to simulate the next generation.
+    '''
+    def reset(self):
+        for a in self.__agents:
+            a.reset()
