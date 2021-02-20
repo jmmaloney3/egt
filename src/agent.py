@@ -42,7 +42,7 @@ class Agent:
     Return a string representation of the agent.
     '''
     def __str__(self):
-        return '{0} num games: {1:3d}, payout: {2:5d}'.format(self.__strategy, \
-                                                              self.__num_games, \
-                                                              self.__payout)
+        return '<{0} g: {1:2d} p: {2:2d}>'.format(self.__strategy, \
+                                                  self.__num_games, \
+                                                  self.__payout)
 
