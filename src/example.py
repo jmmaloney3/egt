@@ -24,11 +24,11 @@ def main():
     PD = game.Game(PD_matrix)
 
     # create the cooperating agents
-    cstrat = strategy.Pure0()
+    cstrat = strategy.Pure(0)
     cagents = [agent.Agent(cstrat) for j in range(15)]
 
     # create the defecting agents
-    dstrat = strategy.Pure1()
+    dstrat = strategy.Pure(1)
     dagents = [agent.Agent(dstrat) for j in range(5)]
 
     # create the simulation engine & play matches

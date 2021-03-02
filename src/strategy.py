@@ -12,7 +12,7 @@ class Strategy:
     Create a generic strategy.
     '''
     def __init__(self):
-        self.name = "Generic Strategy"
+        self._name = "Generic Strategy"
 
     '''
     Choose an action to play given the specified opponent.
@@ -26,28 +26,17 @@ class Strategy:
     def __str__(self):
         return '<strategy: {0}>'.format(self._name)
 
-class Pure0(Strategy):
+class Pure(Strategy):
     '''
-    Create a Pure0 strategy.
+    Create a pure strategy that always chooses the specified action.
     '''
-    def __init__(self):
-        self._name = "Pure0"
+    def __init__(self, action):
+        self.__action = action
+        self._name = "Pure" + str(action)
+
 
     '''
-    A straegy that always selects action 0 regardless of the opponent.
+    Return the action specified by this pure stategy.
     '''
     def choose_action(self, opponent):
-        return 0
-
-class Pure1(Strategy):
-    '''
-    Create a Pure0 strategy.
-    '''
-    def __init__(self):
-        self._name = "Pure1"
-
-    '''
-    A straegy that always selects action 1 regardless of the opponent.
-    '''
-    def choose_action(self, opponent):
-        return 1
+        return self.__action
