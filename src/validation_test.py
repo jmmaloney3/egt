@@ -114,3 +114,18 @@ def test_check_is_prob_dist():
     for test_obj in test_objects:
         with pytest.raises(ValueError):
             validation.check_is_prob_dist(test_obj)
+
+'''
+Test combined pure strategy payoff function validation logic.
+'''
+def test_is_combined_pure_payoff_function():
+    matrix1 = np.array([[1,2,3,4],[5,6,7,8],[9,0,1,2]])
+    matrix2 = np.array([[1,2,3],[4,5,6],[7,8,9],[0,1,2]])
+    test_obj = (matrix1, matrix2)
+
+    validation.check_is_combined_pure_payoff_function(test_obj)
+
+    test_obj = (matrix1, matrix2.T)
+    with pytest.raises(ValueError):
+        validation.check_is_combined_pure_payoff_function(test_obj)
+

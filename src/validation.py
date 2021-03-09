@@ -70,9 +70,6 @@ Validate that the input is a valid probability distriution:
   - elements sum to 1
 '''
 def check_is_prob_dist(x):
-    # check that x is an array-like object
-    check_is_array_like(x)
-
     # check that x is a 1-dimensional array
     check_array_dims(x, 1)
 
@@ -92,11 +89,26 @@ def check_is_prob_dist(x):
         msg = "'{0}' values do not sum to 1: {1}"
         raise ValueError(msg.format(type_name(x), x))
 
+'''
+Validate that the object is a valid combined pure strategy payoff function.
 
+Note: Only 2-player games are currently supported.
+'''
+def check_is_combined_pure_payoff_function(p):
+    # check that p is a 1-D array
+    check_array_dims(p, 1)
 
+    # check that p has two payoff functions - one for each player
+    if (len(p) != 2):
+        msg = "'{0}' has payoff functions for {1} players but only 2 are supported"
+        raise ValueError(msg.format(type_name(p), len(p)))
 
+    # make sure each element of p is a 2-D array
+    check_array_dims(p[0], 2)
+    check_array_dims(p[1], 2)
 
-
-
-
-    
+    # make sure the matrices are compatible
+    if ( (p[0].shape[0] != p[1].shape[1]) or (p[0].shape[1] != p[1].shape[0]) ):
+        msg = "{0}x{1} matrix is not compatible with {2}x{3} matrix"
+        raise ValueError(msg.format(p[0].shape[0], p[0].shape[1], \
+                                    p[1].shape[0], p[1].shape[1]))
