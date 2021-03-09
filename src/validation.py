@@ -8,6 +8,7 @@ Created on Sun Mar 07 21:42 2021
 """
 
 import numpy as np
+import math
 
 '''
 Get the type nme for the object
@@ -33,8 +34,8 @@ x : object
 def check_is_array_like(x):
     if ( (not (hasattr(x, '__len__') or hasattr(x, '__getitem__'))) \
          or (isinstance(x, str)) ):
-        msg = "{0} object is not array-like"
-        raise ValueError(msg.format(type_name(x)))
+        msg = "'{0}' object is not array-like: {1}"
+        raise ValueError(msg.format(type_name(x), x))
 
 '''
 Validate that the input is array-like and has the specified number of dimensions
@@ -55,12 +56,12 @@ def check_array_dims(x, d):
     try:
         dims = len(x.shape)
         if (dims != d):
-            msg = "{0} has {1} dimensions, expected {2}"
-            raise ValueError(msg.format(type_name(x), dims, d))
+            msg = "'{0}' has {1} dimensions, expected {2}: {3}"
+            raise ValueError(msg.format(type_name(x), dims, d, x))
     except AttributeError:
         if (d != 1):
-            msg = "{0} has {1} dimensions, expected {2}"
-            raise ValueError(msg.format(type_name(x), 1, d))
+            msg = "'{0}' has {1} dimensions, expected {2}: {3}"
+            raise ValueError(msg.format(type_name(x), 1, d, x))
 
 '''
 Validate that the input is a valid probability distriution:
@@ -76,13 +77,20 @@ def check_is_prob_dist(x):
     check_array_dims(x, 1)
 
     # check that elements of x are valid probabilities
-    if (any(x<0) or any(x>1)):
-        msg = "one or more values in {0} are not valid probabilities"
-        raise ValueError(msg.format(type_name(x)))
+    try:
+        # supported by numpy arrays
+        if (any(x<0) or any(x>1)):
+            msg = "one or more values in '{0}' are not valid probabilities: {1}"
+            raise ValueError(msg.format(type_name(x), x))
+    except TypeError:
+        # support for tuples and lists
+        if (any(i<0 for i in x) or (any(i>1 for i in x))):
+            msg = "one or more values in '{0}' are not valid probabilities: {1}"
+            raise ValueError(msg.format(type_name(x), x))
 
-    if (np.sum(x) != 1):
-        msg = "{0} values do not sum to 1"
-        raise ValueError(msg.format(type_name(x)))
+    if (not math.isclose(np.sum(x), 1)):
+        msg = "'{0}' values do not sum to 1: {1}"
+        raise ValueError(msg.format(type_name(x), x))
 
 
 

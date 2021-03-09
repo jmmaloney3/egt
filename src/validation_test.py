@@ -73,3 +73,44 @@ def test_check_array_dims():
         validation.check_array_dims([[1,2],[2,2]], 2)
         validation.check_array_dims(np.array([[1,2],[2,3]]), 1)
         validation.check_array_dims((1), 2)
+
+'''
+Test probability distribution checking logic
+'''
+def test_check_is_prob_dist():
+    # checking prob dist first checks that object is array-like
+    with pytest.raises(ValueError):
+        # number 1 is not an array-like object
+        validation.check_is_prob_dist(1)
+
+    # checking prob dist next checks that object is 1-dim array
+    with pytest.raises(ValueError):
+        # 2-D array raises exception
+        validation.check_is_prob_dist(np.array([[1,2],[2,3]]))
+
+    # probability distributions
+    test_objects = (
+        np.array([1]),
+        np.array([0.25,0.75]),
+        np.array([1,0]),
+        [1], [0.4, 0.6], [0,1],
+        (0.85, 0.15), (1,0,0),
+        np.array([1/3,1/3,1/6,1/6]),
+        np.array([0.2499999999,0.7499999999])
+    )
+    for test_obj in test_objects:
+        validation.check_is_prob_dist(test_obj)
+
+    # NOT probability distributions
+    test_objects = (
+        np.array([0.99999999]),
+        np.array([0.250000001,0.75]),
+        np.array([1,0.000000001]),
+        [1.000000001], [0.5, 0.499999999], [0.000000001,1],
+        (0.850000009, 0.15), (1,0,0.000000001),
+        np.array([1/3,1/3,1/6,1/5]),
+        np.array([0.24999999,0.74999999])
+    )
+    for test_obj in test_objects:
+        with pytest.raises(ValueError):
+            validation.check_is_prob_dist(test_obj)
