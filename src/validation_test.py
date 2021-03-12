@@ -12,10 +12,10 @@ import pytest
 
 import validation
 
-'''
-Test array-like validation logic
-'''
 def test_check_is_array_like():
+    '''
+    Test array-like validation logic
+    '''
     # array-like objects
     test_objects = (
         np.array([1,2]), # 1-dim array is array-like
@@ -42,10 +42,10 @@ def test_check_is_array_like():
         with pytest.raises(ValueError):
             validation.check_is_array_like(test_obj)
 
-'''
-Test dimension checking logic
-'''
 def test_check_array_dims():
+    '''
+    Test dimension checking logic
+    '''
     # checking array dims first checks that object is array-like
     with pytest.raises(ValueError):
         # number 1 is not an array-like object
@@ -74,10 +74,10 @@ def test_check_array_dims():
         validation.check_array_dims(np.array([[1,2],[2,3]]), 1)
         validation.check_array_dims((1), 2)
 
-'''
-Test probability distribution checking logic
-'''
 def test_check_is_prob_dist():
+    '''
+    Test probability distribution checking logic
+    '''
     # checking prob dist first checks that object is array-like
     with pytest.raises(ValueError):
         # number 1 is not an array-like object
@@ -115,10 +115,10 @@ def test_check_is_prob_dist():
         with pytest.raises(ValueError):
             validation.check_is_prob_dist(test_obj)
 
-'''
-Test combined pure strategy payoff function validation logic.
-'''
 def test_is_combined_pure_payoff_function():
+    '''
+    Test combined pure strategy payoff function validation logic.
+    '''
     matrix1 = np.array([[1,2,3,4],[5,6,7,8],[9,0,1,2]])
     matrix2 = np.array([[1,2,3],[4,5,6],[7,8,9],[0,1,2]])
     test_obj = (matrix1, matrix2)
@@ -128,4 +128,3 @@ def test_is_combined_pure_payoff_function():
     test_obj = (matrix1, matrix2.T)
     with pytest.raises(ValueError):
         validation.check_is_combined_pure_payoff_function(test_obj)
-
