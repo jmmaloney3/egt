@@ -10,45 +10,62 @@ Created on Sun Mar 07 21:42 2021
 import numpy as np
 import math
 
-'''
-Get the type nme for the object
-
-Parameters
-----------
-obj : object
-  The object whose type name shoudl be returned
-'''
 def type_name(obj):
+    '''
+    Get the type name for the object
+
+    Parameters
+    ----------
+    obj : object
+        The object whose type name should be returned
+
+    Returns
+    -------
+    type_name : str
+        The name of the type of the object
+    '''
     return type(obj).__name__
 
-'''
-Validate that the input is array-like and supports the following:
-  - using len(x) to retrieve the length
-  - using x[i] to retrieve element i
-
-Parameters
-----------
-x : object
-  Input object to check
-'''
 def check_is_array_like(x):
-    if ( (not (hasattr(x, '__len__') or hasattr(x, '__getitem__'))) \
-         or (isinstance(x, str)) ):
+    '''
+    Validate that the input is `array-like` and supports the following:
+      - using `len(x)` to retrieve the length
+      - using `x[i]` to retrieve element `i`
+
+    Parameters
+    ----------
+    x : object
+        Input object to check
+
+    Raises
+    ------
+    ValueError
+        If the object is not `array_like`
+    '''
+    if ( (not (hasattr(x, '__len__') or hasattr(x, '__getitem__'))) or \
+         (isinstance(x, str)) ):
         msg = "'{0}' object is not array-like: {1}"
         raise ValueError(msg.format(type_name(x), x))
 
-'''
-Validate that the input is array-like and has the specified number of dimensions
-
-Parameters
-----------
-x : object
-  Input object to check
-
-d : integer
-  The number of dimensions x should have
-'''
 def check_array_dims(x, d):
+    '''
+    Validate that the input is `array-like` and has the specified number
+    of dimensions
+
+    Parameters
+    ----------
+    x : object
+        Input object to check
+
+    d : integer
+        The number of dimensions `x` should have
+
+    Raises
+    ------
+    ValueError
+        If the object is not `array_like` or does not have the specified number
+        of dimensions
+    '''
     # verify that x is array-like
     check_is_array_like(x)
 
@@ -63,13 +80,23 @@ def check_array_dims(x, d):
             msg = "'{0}' has {1} dimensions, expected {2}: {3}"
             raise ValueError(msg.format(type_name(x), 1, d, x))
 
-'''
-Validate that the input is a valid probability distriution:
-  - 1-dimensional array-like
-  - elements are numeric values between 0 and 1
-  - elements sum to 1
-'''
 def check_is_prob_dist(x):
+    '''
+    Validate that the input is a valid probability distriution:
+      - 1-dimensional `array-like`
+      - elements are numeric values between `0` and `1`
+      - elements sum to `1`
+
+    Parameters
+    ----------
+    x : object
+        Input object to check
+
+    Raises
+    ------
+    ValueError
+        If the object is not a probability distribution
+    '''
     # check that x is a 1-dimensional array
     check_array_dims(x, 1)
 
@@ -89,12 +116,24 @@ def check_is_prob_dist(x):
         msg = "'{0}' values do not sum to 1: {1}"
         raise ValueError(msg.format(type_name(x), x))
 
-'''
-Validate that the object is a valid combined pure strategy payoff function.
-
-Note: Only 2-player games are currently supported.
-'''
 def check_is_combined_pure_payoff_function(p):
+    '''
+    Validate that the object is a valid combined pure strategy payoff function.
+
+    Parameters
+    ----------
+    x : object
+        Input object to check
+
+    Raises
+    ------
+    ValueError
+        If the object is not a valid combined pure strategy payoff function
+
+    Notes
+    -----
+    Only 2-player games are currently supported.
+    '''
     # check that p is a 1-D array
     check_array_dims(p, 1)
 
