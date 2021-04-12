@@ -10,7 +10,7 @@ Created on Sun Mar 07 22:43 2021
 import numpy as np
 import pytest
 
-import validation
+from egt import validation
 
 def test_check_is_array_like():
     '''

@@ -1,6 +1,23 @@
 # -*- coding: utf-8 -*-
 """
-A two person game.
+A set of capabilities for defining the stage games that are used in
+evolutionary game theory (EGT) simulations.  This module currently only
+suports symmetric two-player normal form games.  These are games where
+the following holds:
+
+* There are exactly two player positions
+* Each player position has the same numer of pure strategies (k)
+* Payoff function is independent of player position
+
+Given these constraints, the game and the strategies used by agents playing
+the game can be represented as follows:
+
+* The payoff function is represented as a k x k matrix where k is the number
+  of pure strategies in the game
+* A mixed strategy is represented as a k-vector where each component of the 
+  vector represents the probability that the agent plays the corresponding
+  pure strategy.  A pure strategy is represented as a k-vectors with one
+  component equal to one and the remaining components equal to zero.
 
 Created on Thu Dec 17 21:40 2020
 
@@ -9,47 +26,32 @@ Created on Thu Dec 17 21:40 2020
 import numpy as np
 
 '''
-Calculate the expected payoffs for a players in a 2-player normal form game
-where:
-  - n   : number of players, in this case n = 2
-  - m_i : number of pure strategies available to player i
-  - x_i : vector of length m_i representing the mixed strategy for player i
-  - p_i : m_i x m_j dimension matrix specifying the pure strategy payoff
-          function for player i
+Calculate the expected payoffs for the two mixed strategies playing a
+one-shot symmetric two player normal form game.
 
 Parameters
 ----------
-x : array-like
-    The mixed strategy profile being played where x[i] is the mixed strategy
-    for player i
 
-p : array-like
-    The combined pure strategy payoff function where p[i] is a m_i x m_j matrix
-    specifying the pure strategy payoff function for player i
+x : vector
+  k-vector defining the mixed strategy for the first player
+
+y : vector
+  k-vector defining the mixed strategy for the second player
+
+A : array-like
+  k x k matrix defining the payoffs for a two-player symmetric normal
+  form game
 
 Returns
 -------
-u_x : array-like
-    The expected payoffs where u_x[i] is the expected payoff for player i
+u : vector
+    2-vector whose components are the expected payoffs for the two
+    mixed strategies
 '''
-def expected_payoffs(x, p):
-    _check_arrays(x, p)
-
-    u0 = np.dot(x[0], np.dot(p[0],x[1])) # expected payoff for player 0
-    u1 = np.dot(x[1], np.dot(p[1],x[0])) # expected payoff for player 1
-
-    return np.array([u0, u1])
-
-def _check_arrays(x, p):
-    m_0 = len(x[0])
-    m_1 = len(x[1])
-
-    err_msg = "{0} incompatible with mixed strategy vectors"
-    if (p[0].shape != (m_0, m_1)):
-        raise ValueError(err_msg.format("p[0]"))
-
-    if (p[1].shape != (m_1, m_0)):
-        raise ValueError(err_msg.format("p[1]"))
+def expected_payoffs(x, y, A):
+    ux = np.dot(np.dot(x, A), y)
+    uy = np.dot(np.dot(y, A), x)
+    return np.array([ux, uy])
 
 class Game:
 
