@@ -10,12 +10,12 @@ User Guide: Evolutionary Game Theory (EGT) Toolkit
 Normal Form Games with Pure Strategies
 --------------------------------------
 
-Let :math:`\mathcal{I}=\{1,2,...n\}` be the set of `player positions` for a
+Let :math:`\mathcal{I}=\{1,2,\dots,n\}` be the set of `player positions` for a
 `normal form` game.
 
 Each player position :math:`\mathit{i}` has a set
-:math:`\mathcal{S}_i=\{1,2,...,m_i\}` of `pure strategies`.  A `pure-strategy
-profile` :math:`\boldsymbol{s}=(s_1,s_2,...,s_n)` represents a game
+:math:`\mathcal{S}_i=\{1,2,\dots,m_i\}` of `pure strategies`.  A `pure-strategy
+profile` :math:`\boldsymbol{s}=(s_1,s_2,\dots,s_n)` represents a game
 configuration in which each player position :math:`\mathit{i}` has chosen
 (or been assigned) a specific pure strategy :math:`s_i \in S_i`.  The set
 :math:`\mathcal{S}` of all possible pure-strategy profiles is the
@@ -25,7 +25,7 @@ A `pure-strategy payoff function` :math:`\pi_i(\boldsymbol{s})`
 defines the payoff for player :math:`\mathit{i}` in the game configuration
 specified by pure-strategy profile :math:`\boldsymbol{s}`.  The `combined
 pure-strategy payoff function` :math:`\boldsymbol{\pi}(\boldsymbol{s})=
-(\pi_1(\boldsymbol{s}),\pi_2(\boldsymbol{s}),...,\pi_n(\boldsymbol{s}))`
+(\pi_1(\boldsymbol{s}),\pi_2(\boldsymbol{s}),\dots,\pi_n(\boldsymbol{s}))`
 provides a vector representing the payoffs for each player position for
 pure-strategy profile :math:`\boldsymbol{s}`.
 
@@ -34,32 +34,58 @@ Given these definitions, a game in normal form can be represented as the tuplet
 
 Example
 -------
-A game with 3 players where player 1 has two pure strategies, player 2 has
-three pure strategies and player 3 has four pure strategies has the following
-representation:
+A game with three player positions where position one has two pure strategies,
+position two has three pure strategies and position three has four pure
+strategies has the following representation:
 
-* :math:`\mathcal{I}=\{1,2,3\}`
-* :math:`\mathcal{S}_1=\{1,2\}`, :math:`\mathcal{S}_2=\{1,2,3\}`,
-  :math:`\mathcal{S}_3=\{1,2,3,4\}`
-* :math:`\mathcal{S}=\mathcal{S}_1\times\mathcal{S}_2\times\mathcal{S}_3`
+.. math::
+
+   \mathcal{I}&=\{1,2,3\} \\
+   \mathcal{S}_1&=\{1,2\},\mathcal{S}_2=\{1,2,3\},\mathcal{S}_3=\{1,2,3,4\} \\
+   \mathcal{S}&=\mathcal{S}_1\times\mathcal{S}_2\times\mathcal{S}_3=\left\{
+   \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix},
+   \begin{pmatrix} 1 \\ 1 \\ 2 \end{pmatrix},
+   \dots
+   \begin{pmatrix} 2 \\ 3 \\ 3 \end{pmatrix},
+   \begin{pmatrix} 2 \\ 3 \\ 4 \end{pmatrix}
+   \right\}
 
 ---------------------------------------
 Normal Form Games with Mixed Strategies
 ---------------------------------------
 
-A `mixed strategy` for player positon `i` is a vector
-:math:`x_i=(x_{i,1},x_{i,2},...,x_{i,m_i})` where each component
-:math:`x_{i,h}` of the vector represents the probability assigned to the
-player position's `h`-th pure strategy.
+A `mixed strategy` for player positon :math:`i \in \mathcal{I}` is a vector
+:math:`\boldsymbol{x_i}=(x_{i,1},x_{i,2},\dots,x_{i,m_i})` where for
+:math:`h \in \mathcal{S}_i`
 
-A `mixed strategy profile` :math:`\chi=(x_1,x_2,...,x_n)` is a game configuration
-in which each player position `i` has been assigned a mixed strategy
-:math:`x_i`.
+.. math::
 
-The probability that a pure strategy profile :math:`\sigma` will be played when a
-mixed strategy profile :math:`\chi` is in effect is equal to the following:
+      x_{i,h} = \Pr(h \mid \boldsymbol{x_i})
 
-TBD??
+This is the probability that player position :math:`\mathit{i}` plays
+pure strategy :math:`\mathit{h}` when mixed strategy :math:`\boldsymbol{x_i}`
+is used.
+
+A `mixed strategy profile` :math:`\boldsymbol{\chi}=(\boldsymbol{x_1},
+\boldsymbol{x_2},\dots,\boldsymbol{x_n})` is a game configuration
+in which each player position :math:`\mathit{i}` has been assigned a mixed
+strategy :math:`\boldsymbol{x_i}`.
+
+The probability that a pure strategy profile :math:`\boldsymbol{s}` will be
+played when a mixed strategy profile :math:`\boldsymbol{\chi}` is in effect
+is equal to the following:
+
+.. math::
+
+   \Pr(\boldsymbol{s}\mid\boldsymbol{\chi})=\prod_{i=1}^{n} x_{i,s_i}
+
+Where :math:`s_i \in \mathcal{S}_i` is the pure strategy for position
+:math:`\mathit{i}` specified by pure strategy profile :math:`\boldsymbol{s}`
+and
+
+.. math::
+
+   x_{i,s_i} = \Pr(s_i \mid \boldsymbol{x_i})
 
 ------------------------
 Symmetric 2-Player Games
@@ -73,7 +99,7 @@ strategies.
 .. math::
 
    I &= \{1,2\} \\
-   S_1 &= S_2 = \{1,2,...,m\}
+   S_1 &= S_2 = \{1,2,\dots,m\}
 
 In addition, given strategy profile :math:`s_a=(s_1,s_2)` and a second strategy
 profile :math:`s_b=(s_2,s_1)` where the pure strategies assigned to each player
