@@ -15,11 +15,16 @@ Let :math:`\mathcal{I}=\{1,2,\dots,n\}` be the set of `player positions` for a
 
 Each player position :math:`\mathit{i}` has a set
 :math:`\mathcal{S}_i=\{1,2,\dots,m_i\}` of `pure strategies`.  A `pure-strategy
-profile` :math:`\boldsymbol{s}=(s_1,s_2,\dots,s_n)` represents a game
-configuration in which each player position :math:`\mathit{i}` has chosen
-(or been assigned) a specific pure strategy :math:`s_i \in S_i`.  The set
-:math:`\mathcal{S}` of all possible pure-strategy profiles is the
-`pure-strategy space` of the game.
+profile`
+
+.. math::
+
+   \boldsymbol{s}=(s_1,s_2,\dots,s_n)
+
+where :math:`s_i \in S_i` represents a game configuration in which each
+player position :math:`\mathit{i}` has chosen (or been assigned) a specific
+pure strategy.  The set :math:`\mathcal{S}` of all possible pure-strategy
+profiles is the `pure-strategy space` of the game.
 
 A `pure-strategy payoff function` :math:`\pi_i(\boldsymbol{s})`
 defines the payoff for player :math:`\mathit{i}` in the game configuration
@@ -50,6 +55,13 @@ strategies has the following representation:
    \begin{pmatrix} 2 \\ 3 \\ 4 \end{pmatrix}
    \right\}
 
+For this example game, the following defines a possible pure strategy profile
+for the game:
+
+.. math::
+
+   \boldsymbol{s}=(1,3,4)
+
 ---------------------------------------
 Normal Form Games with Mixed Strategies
 ---------------------------------------
@@ -64,7 +76,9 @@ A `mixed strategy` for player positon :math:`i \in \mathcal{I}` is a vector
 
 This is the probability that player position :math:`\mathit{i}` plays
 pure strategy :math:`\mathit{h}` when mixed strategy :math:`\boldsymbol{x_i}`
-is used.
+is used.  Note that a pure strategy can be represented as a mixed stratgy
+where one component is equal to one and the remaining components are equal
+zero.
 
 A `mixed strategy profile` :math:`\boldsymbol{\chi}=(\boldsymbol{x_1},
 \boldsymbol{x_2},\dots,\boldsymbol{x_n})` is a game configuration
@@ -86,6 +100,46 @@ and
 .. math::
 
    x_{i,s_i} = \Pr(s_i \mid \boldsymbol{x_i})
+
+Since the payoff function :math:`\pi_i(\boldsymbol{s})` for a game is defined
+in terms of a pure strategy profile and a mixed strategy profile defines the
+probabilty that a particular pure strategy profile will be in effect
+
+The `mixed-strategy payoff function` :math:`u_i(\boldsymbol{\chi})` for
+player :math:`\mathit{i}` is defined as the `expected value` over all
+pure-strategy profiles :math:`\boldsymbol{s} \in \mathcal{S}` of the
+pure-strategy payoff function :math:`\pi_i(\boldsymbol{s})` given that mixed
+strategy profile :math:`\boldsymbol{\chi}` is in effect:
+
+.. math::
+
+   \mathop{\mathbb{E}}\limits_{\boldsymbol{s} \in \mathcal{S}}
+   [\pi_i(\boldsymbol{s})\mid\boldsymbol{\chi}]=
+   \sum_{\boldsymbol{s} \in \mathcal{S}}
+   \Pr(\boldsymbol{s}\mid\boldsymbol{\chi})
+   \pi_i(\boldsymbol{s})
+
+Example
+-------
+The following defines a possible mixed strategy profile for the game defined
+in the previous example:
+
+.. math::
+
+   \boldsymbol{x_1}&=(0.65,0.35) \\
+   \boldsymbol{x_2}&=(0.25,0.15,0.6) \\
+   \boldsymbol{x_3}&=(0.25,0.05,0.2,0.5) \\
+   \boldsymbol{\chi}&=(\boldsymbol{x_1},\boldsymbol{x_2},\boldsymbol{x_3})
+
+In this case, the probability that the example pure strategy profile
+:math:`\boldsymbol{s}=(1,3,4)` will be used is the following:
+
+.. math::
+
+  \Pr(\boldsymbol{s}\mid\boldsymbol{\chi})=
+  \prod_{i=1}^{3} x_{i,s_i}=
+  x_{1,1} \cdot x_{2,3} \cdot x_{3,4}=
+  0.65 \cdot 0.6 \cdot 0.5=0.195
 
 ------------------------
 Symmetric 2-Player Games
