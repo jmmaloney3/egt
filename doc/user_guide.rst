@@ -21,7 +21,7 @@ profile`
 
    \boldsymbol{s}=(s_1,s_2,\dots,s_n)
 
-where :math:`s_i \in S_i` represents a game configuration in which each
+where :math:`s_i \in \mathcal{S}_i` represents a game configuration in which each
 player position :math:`\mathit{i}` has chosen (or been assigned) a specific
 pure strategy.  The set :math:`\mathcal{S}` of all possible pure-strategy
 profiles is the `pure-strategy space` of the game.
@@ -140,6 +140,58 @@ In this case, the probability that the example pure strategy profile
   \prod_{i=1}^{3} x_{i,s_i}=
   x_{1,1} \cdot x_{2,3} \cdot x_{3,4}=
   0.65 \cdot 0.6 \cdot 0.5=0.195
+
+----------------------------------------------
+2-Player Normal Form Games wit Pure Strategies
+----------------------------------------------
+
+In the special case of a game with only two player positions where position
+one has :math:`m_1` pure strategies and position to has :math:`m_2` pure
+strategies, the payoff functions can be defined using a pair of
+:math:`m_1 \times m_2` matrices :math:`(\boldsymbol{A},\boldsymbol{B})`.
+
+For all pure strategy profiles :math:`\boldsymbol{s}=(h,k)` where 
+:math:`h \in \mathcal{S}_1` and :math:`k \in \mathcal{S}_2`, the two
+payoff functions :math:`pi_1(\boldsymbol{s})` and :math:`pi_2(\boldsymbol{s})`
+can be defined using the two matrices :math:`\boldsymbol{A}` and
+:math:`\boldsymbol{B}` as follows:
+
+.. math::
+
+  \pi_1(\boldsymbol{s})=a_{h,k} \\
+  \pi_2(\boldsymbol{s})=b_{h,k}
+
+Note that a row in either matrix always corresponds to a pure strategy for
+player position one always and a columns always corresponds to a pure
+strategy for player position two.
+
+Example
+-------
+
+Consider the two player game created by removing player position three from
+the game presented in the first example above:
+
+.. math::
+
+   \mathcal{I}&=\{1,2\} \\
+   \mathcal{S}_1&=\{1,2\},\mathcal{S}_2=\{1,2,3\}
+
+Let the payoff functions for the two player positions be defined by the
+following :math:`2 \times 3` matrices:
+
+.. math::
+
+   \boldsymbol{A}&=\begin{pmatrix} 1 & 2 & 5 \\ 3 & 4 & 0 \end{pmatrix} \\
+   \boldsymbol{B}&=\begin{pmatrix} 4 & 3 & 0\\ 2 & 1 & 2 \end{pmatrix}
+
+Given the pure strategy profile :math:`\boldsymbol{s}=(1,3)`, the payoffs for
+the two player positions are the following:
+
+.. math::
+
+   \pi_1(\boldsymbol{s}) = a_{1,3} = 5 \\
+   \pi_2(\boldsymbol{s}) = b_{1,3} = 0
+
 
 ------------------------
 Symmetric 2-Player Games
