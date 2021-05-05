@@ -101,9 +101,14 @@ and
 
    x_{i,s_i} = \Pr(s_i \mid \boldsymbol{x_i})
 
-Since the payoff function :math:`\pi_i(\boldsymbol{s})` for a game is defined
-in terms of a pure strategy profile and a mixed strategy profile defines the
-probabilty that a particular pure strategy profile will be in effect
+The pure-strategy payoff function :math:`\pi_i(\boldsymbol{s})` for
+a game defines the payoff for player position :math:`\mathit{i}` when a
+pure strategy profile :math:`\boldsymbol{s} \in \mathcal{S}` is in effect.
+A mixed strategy profile :math:`\boldsymbol{\chi}` defines the probabilty
+that each pure strategy profile :math:`\boldsymbol{s}` is in effect.
+Therefore, the value of the pure-strategy payoff function
+:math:`\pi_i(\boldsymbol{s})` cannot be deteremined when mixed strategy
+:math:`\boldsymbol{\chi}` is in effect.
 
 The `mixed-strategy payoff function` :math:`u_i(\boldsymbol{\chi})` for
 player :math:`\mathit{i}` is defined as the `expected value` over all
@@ -152,7 +157,7 @@ strategies, the payoff functions can be defined using a pair of
 
 For all pure strategy profiles :math:`\boldsymbol{s}=(h,k)` where 
 :math:`h \in \mathcal{S}_1` and :math:`k \in \mathcal{S}_2`, the two
-payoff functions :math:`pi_1(\boldsymbol{s})` and :math:`pi_2(\boldsymbol{s})`
+payoff functions :math:`\pi_1(\boldsymbol{s})` and :math:`\pi_2(\boldsymbol{s})`
 can be defined using the two matrices :math:`\boldsymbol{A}` and
 :math:`\boldsymbol{B}` as follows:
 
@@ -162,8 +167,8 @@ can be defined using the two matrices :math:`\boldsymbol{A}` and
   \pi_2(\boldsymbol{s})=b_{h,k}
 
 Note that a row in either matrix always corresponds to a pure strategy for
-player position one always and a columns always corresponds to a pure
-strategy for player position two.
+player position one and a columns always corresponds to a pure strategy for
+player position two.
 
 Example
 -------
@@ -184,14 +189,13 @@ following :math:`2 \times 3` matrices:
    \boldsymbol{A}&=\begin{pmatrix} 1 & 2 & 5 \\ 3 & 4 & 0 \end{pmatrix} \\
    \boldsymbol{B}&=\begin{pmatrix} 4 & 3 & 0\\ 2 & 1 & 2 \end{pmatrix}
 
-Given the pure strategy profile :math:`\boldsymbol{s}=(1,3)`, the payoffs for
+Given the pure-strategy profile :math:`\boldsymbol{s}=(1,3)`, the payoffs for
 the two player positions are the following:
 
 .. math::
 
    \pi_1(\boldsymbol{s}) = a_{1,3} = 5 \\
    \pi_2(\boldsymbol{s}) = b_{1,3} = 0
-
 
 ------------------------
 Symmetric 2-Player Games
