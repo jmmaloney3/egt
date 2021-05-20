@@ -118,6 +118,7 @@ strategy profile :math:`\boldsymbol{\chi}` is in effect:
 
 .. math::
 
+   u_i(\boldsymbol{\chi})= \
    \mathop{\mathbb{E}}\limits_{\boldsymbol{s} \in \mathcal{S}}
    [\pi_i(\boldsymbol{s})\mid\boldsymbol{\chi}]=
    \sum_{\boldsymbol{s} \in \mathcal{S}}
@@ -146,28 +147,28 @@ In this case, the probability that the example pure strategy profile
   x_{1,1} \cdot x_{2,3} \cdot x_{3,4}=
   0.65 \cdot 0.6 \cdot 0.5=0.195
 
-----------------------------------------------
-2-Player Normal Form Games wit Pure Strategies
-----------------------------------------------
+--------------------------
+2-Player Normal Form Games
+--------------------------
 
 In the special case of a game with only two player positions where position
-one has :math:`m_1` pure strategies and position to has :math:`m_2` pure
+one has :math:`m_1` pure strategies and position two has :math:`m_2` pure
 strategies, the payoff functions can be defined using a pair of
 :math:`m_1 \times m_2` matrices :math:`(\boldsymbol{A},\boldsymbol{B})`.
 
-For all pure strategy profiles :math:`\boldsymbol{s}=(h,k)` where 
+For all pure strategy profiles :math:`\boldsymbol{s_{h,k}}=(h,k)` where 
 :math:`h \in \mathcal{S}_1` and :math:`k \in \mathcal{S}_2`, the two
-payoff functions :math:`\pi_1(\boldsymbol{s})` and :math:`\pi_2(\boldsymbol{s})`
-can be defined using the two matrices :math:`\boldsymbol{A}` and
-:math:`\boldsymbol{B}` as follows:
+payoff functions :math:`\pi_1(\boldsymbol{s_{h,k}})` and
+:math:`\pi_2(\boldsymbol{s_{h,k}})` can be defined using the two matrices
+:math:`\boldsymbol{A}` and :math:`\boldsymbol{B}` as follows:
 
 .. math::
 
-  \pi_1(\boldsymbol{s})=a_{h,k} \\
-  \pi_2(\boldsymbol{s})=b_{h,k}
+  \pi_1(\boldsymbol{s_{h,k}})=a_{h,k} \\
+  \pi_2(\boldsymbol{s_{h,k}})=b_{h,k}
 
 Note that a row in either matrix always corresponds to a pure strategy for
-player position one and a columns always corresponds to a pure strategy for
+player position one and a column always corresponds to a pure strategy for
 player position two.
 
 Example
@@ -196,6 +197,43 @@ the two player positions are the following:
 
    \pi_1(\boldsymbol{s}) = a_{1,3} = 5 \\
    \pi_2(\boldsymbol{s}) = b_{1,3} = 0
+
+Given the mixed-strategy profile
+:math:`\boldsymbol{\chi}=(\boldsymbol{x_1},\boldsymbol{x_2})` where
+
+.. math::
+
+   \boldsymbol{x_1}&=(0.65,0.35) \\
+   \boldsymbol{x_2}&=(0.25,0.15,0.6)
+
+the expected payout :math:`u_1(\boldsymbol{\chi})` for player position one
+is the following:
+
+.. math::
+
+   u_i(\boldsymbol{\chi})=& 
+   \sum_{h \in \mathcal{S}_1, k \in \mathcal{S}_2}
+   \Pr(\boldsymbol{s_{h,k}}\mid\boldsymbol{\chi})
+   \pi_1(\boldsymbol{s_{h,k}}) \\
+   =&\Pr(\boldsymbol{s_{1,1}}\mid\boldsymbol{\chi})
+   \pi_1(\boldsymbol{s_{1,1}}) +
+   \Pr(\boldsymbol{s_{1,2}}\mid\boldsymbol{\chi})
+   \pi_1(\boldsymbol{s_{1,2}}) +
+   \Pr(\boldsymbol{s_{1,3}}\mid\boldsymbol{\chi})
+   \pi_1(\boldsymbol{s_{1,3}}) + \\
+   &\Pr(\boldsymbol{s_{2,1}}\mid\boldsymbol{\chi})
+   \pi_1(\boldsymbol{s_{2,1}}) +
+   \Pr(\boldsymbol{s_{2,2}}\mid\boldsymbol{\chi})
+   \pi_1(\boldsymbol{s_{2,2}}) +
+   \Pr(\boldsymbol{s_{2,3}}\mid\boldsymbol{\chi})
+   \pi_1(\boldsymbol{s_{2,3}}) \\
+   =&(0.65 \cdot 0.25 \cdot 1) +
+   (0.65 \cdot 0.15 \cdot 2) + 
+   (0.65 \cdot 0.6 \cdot 5) + \\
+   &(0.35 \cdot 0.25 \cdot 3) +
+   (0.35 \cdot 0.15 \cdot 4) + 
+   (0.35 \cdot 0.6 \cdot 0) \\
+   =&2.78
 
 ------------------------
 Symmetric 2-Player Games
