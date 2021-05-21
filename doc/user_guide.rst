@@ -156,20 +156,54 @@ one has :math:`m_1` pure strategies and position two has :math:`m_2` pure
 strategies, the payoff functions can be defined using a pair of
 :math:`m_1 \times m_2` matrices :math:`(\boldsymbol{A},\boldsymbol{B})`.
 
-For all pure strategy profiles :math:`\boldsymbol{s_{h,k}}=(h,k)` where 
+For all pure strategy profiles :math:`\boldsymbol{s}_{h,k}=(h,k)` where 
 :math:`h \in \mathcal{S}_1` and :math:`k \in \mathcal{S}_2`, the two
-payoff functions :math:`\pi_1(\boldsymbol{s_{h,k}})` and
-:math:`\pi_2(\boldsymbol{s_{h,k}})` can be defined using the two matrices
+pure strategy payoff functions :math:`\pi_1(\boldsymbol{s}_{h,k})` and
+:math:`\pi_2(\boldsymbol{s}_{h,k})` can be defined using the two matrices
 :math:`\boldsymbol{A}` and :math:`\boldsymbol{B}` as follows:
 
 .. math::
 
-  \pi_1(\boldsymbol{s_{h,k}})=a_{h,k} \\
-  \pi_2(\boldsymbol{s_{h,k}})=b_{h,k}
+  \pi_1(\boldsymbol{s}_{h,k})=a_{h,k} \\
+  \pi_2(\boldsymbol{s}_{h,k})=b_{h,k}
 
 Note that a row in either matrix always corresponds to a pure strategy for
 player position one and a column always corresponds to a pure strategy for
 player position two.
+
+For all mixed-strategy profiles
+:math:`\boldsymbol{\chi}_{\boldsymbol{x},\boldsymbol{y}}=
+(\boldsymbol{x},\boldsymbol{y})` where :math:`\boldsymbol{x}` is a mixed
+stratgy for player position one and :math:`\boldsymbol{y}` is a mixed strategy
+for player position two, the two mixed strategy payoff functions
+:math:`u_1(\boldsymbol{\chi}_{\boldsymbol{x},\boldsymbol{y}})` and
+:math:`u_2(\boldsymbol{\chi}_{\boldsymbol{x},\boldsymbol{y}})` can also
+be defined using the two matrices as follows:
+
+.. math::
+
+  u_1(\boldsymbol{\chi}_{\boldsymbol{x},\boldsymbol{y}})&= 
+  \sum_{h \in \mathcal{S}_1, k \in \mathcal{S}_2}
+  \Pr(\boldsymbol{s_{h,k}}\mid\boldsymbol{\chi}_
+  {\boldsymbol{x},\boldsymbol{y}})
+  \pi_1(\boldsymbol{s_{h,k}}) \\
+  &=\sum_{h \in \mathcal{S}_1, k \in \mathcal{S}_2}
+  (x_h \cdot y_k) a_{h,k} \\
+  &=\sum_{h \in \mathcal{S}_1, k \in \mathcal{S}_2}
+  x_h \cdot a_{h,k} \cdot y_k \\
+  &=\boldsymbol{x} \boldsymbol{A} \boldsymbol{y}
+
+  u_2(\boldsymbol{\chi}_{\boldsymbol{x},\boldsymbol{y}})&= 
+  \sum_{h \in \mathcal{S}_1, k \in \mathcal{S}_2}
+  \Pr(\boldsymbol{s_{h,k}}\mid\boldsymbol{\chi}_
+  {\boldsymbol{x},\boldsymbol{y}})
+  \pi_2(\boldsymbol{s_{h,k}}) \\
+  &=\sum_{h \in \mathcal{S}_1, k \in \mathcal{S}_2}
+  (x_h \cdot y_k) b_{h,k} \\
+  &=\sum_{h \in \mathcal{S}_1, k \in \mathcal{S}_2}
+  x_h \cdot b_{h,k} \cdot y_k \\
+  &=\boldsymbol{x} \boldsymbol{B} \boldsymbol{y}
+  =\boldsymbol{y} \boldsymbol{B}^T \boldsymbol{x}
 
 Example
 -------
@@ -190,8 +224,8 @@ following :math:`2 \times 3` matrices:
    \boldsymbol{A}&=\begin{pmatrix} 1 & 2 & 5 \\ 3 & 4 & 0 \end{pmatrix} \\
    \boldsymbol{B}&=\begin{pmatrix} 4 & 3 & 0\\ 2 & 1 & 2 \end{pmatrix}
 
-Given the pure-strategy profile :math:`\boldsymbol{s}=(1,3)`, the payoffs for
-the two player positions are the following:
+Given the pure-strategy profile :math:`\boldsymbol{s}=(1,3)`, the
+pure-strategy payoffs for the two player positions are the following:
 
 .. math::
 
@@ -206,34 +240,27 @@ Given the mixed-strategy profile
    \boldsymbol{x_1}&=(0.65,0.35) \\
    \boldsymbol{x_2}&=(0.25,0.15,0.6)
 
-the expected payout :math:`u_1(\boldsymbol{\chi})` for player position one
-is the following:
+the mixed-strategy payouts for the two player positions are the following:
 
 .. math::
 
-   u_i(\boldsymbol{\chi})=& 
-   \sum_{h \in \mathcal{S}_1, k \in \mathcal{S}_2}
-   \Pr(\boldsymbol{s_{h,k}}\mid\boldsymbol{\chi})
-   \pi_1(\boldsymbol{s_{h,k}}) \\
-   =&\Pr(\boldsymbol{s_{1,1}}\mid\boldsymbol{\chi})
-   \pi_1(\boldsymbol{s_{1,1}}) +
-   \Pr(\boldsymbol{s_{1,2}}\mid\boldsymbol{\chi})
-   \pi_1(\boldsymbol{s_{1,2}}) +
-   \Pr(\boldsymbol{s_{1,3}}\mid\boldsymbol{\chi})
-   \pi_1(\boldsymbol{s_{1,3}}) + \\
-   &\Pr(\boldsymbol{s_{2,1}}\mid\boldsymbol{\chi})
-   \pi_1(\boldsymbol{s_{2,1}}) +
-   \Pr(\boldsymbol{s_{2,2}}\mid\boldsymbol{\chi})
-   \pi_1(\boldsymbol{s_{2,2}}) +
-   \Pr(\boldsymbol{s_{2,3}}\mid\boldsymbol{\chi})
-   \pi_1(\boldsymbol{s_{2,3}}) \\
-   =&(0.65 \cdot 0.25 \cdot 1) +
-   (0.65 \cdot 0.15 \cdot 2) + 
-   (0.65 \cdot 0.6 \cdot 5) + \\
-   &(0.35 \cdot 0.25 \cdot 3) +
-   (0.35 \cdot 0.15 \cdot 4) + 
-   (0.35 \cdot 0.6 \cdot 0) \\
+   u_1(\boldsymbol{\chi})=&\boldsymbol{x_1}\boldsymbol{A}\boldsymbol{x_2} \\
+   =&(0.65 \cdot 1 \cdot 0.25) +
+     (0.65 \cdot 2 \cdot 0.15) + 
+     (0.65 \cdot 5 \cdot 0.6) + \\
+   & (0.35 \cdot 3 \cdot 0.25) +
+     (0.35 \cdot 4 \cdot 0.15) + 
+     (0.35 \cdot 0 \cdot 0.6) \\
    =&2.78
+
+   u_2(\boldsymbol{\chi})=&\boldsymbol{x_1}\boldsymbol{B}\boldsymbol{x_2} \\
+   =&(0.65 \cdot 4 \cdot 0.25) +
+     (0.65 \cdot 3 \cdot 0.15) + 
+     (0.65 \cdot 0 \cdot 0.6) + \\
+   & (0.35 \cdot 2 \cdot 0.25) +
+     (0.35 \cdot 1 \cdot 0.15) + 
+     (0.35 \cdot 2 \cdot 0.6) \\
+   =&1.59
 
 ------------------------
 Symmetric 2-Player Games
