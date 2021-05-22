@@ -154,7 +154,8 @@ In this case, the probability that the example pure strategy profile
 In the special case of a game with only two player positions where position
 one has :math:`m_1` pure strategies and position two has :math:`m_2` pure
 strategies, the payoff functions can be defined using a pair of
-:math:`m_1 \times m_2` matrices :math:`(\boldsymbol{A},\boldsymbol{B})`.
+:math:`m_1 \times m_2` `payoff matrices`
+:math:`(\boldsymbol{A},\boldsymbol{B})`.
 
 For all pure strategy profiles :math:`\boldsymbol{s}_{h,k}=(h,k)` where 
 :math:`h \in \mathcal{S}_1` and :math:`k \in \mathcal{S}_2`, the two
@@ -262,55 +263,87 @@ the mixed-strategy payouts for the two player positions are the following:
      (0.35 \cdot 2 \cdot 0.6) \\
    =&1.59
 
-------------------------
-Symmetric 2-Player Games
-------------------------
+------------------------------------
+Symmetric 2-Player Normal Form Games
+------------------------------------
 
-The ``egt`` package currently supports the use of `2-person symmetric` games
-as the `stage game` for simulations.  In this case, the number of player
-positions is limited to two and each player position has the same set of pure
-strategies.
-
-.. math::
-
-   I &= \{1,2\} \\
-   S_1 &= S_2 = \{1,2,\dots,m\}
-
-In addition, given strategy profile :math:`s_a=(s_1,s_2)` and a second strategy
-profile :math:`s_b=(s_2,s_1)` where the pure strategies assigned to each player
-position have been swapped, the payoff functions for the two player positions
-satisfy the following conditions:
+In the special case of a `symmetric` two-player normal form game, each player
+position has :math:`m` pure strategies and the pair of :math:`m \times m`
+payoff matrices :math:`(\boldsymbol{A},\boldsymbol{B})` meets the following
+aditional requirement:
 
 .. math::
 
-   \pi_1(s_a) &= \pi_2(s_b) \\
-   \pi_1(s_b) &= \pi_2(s_a)
+   \boldsymbol{B} = \boldsymbol{A}^T
 
-:math:`s_1,s_2 \in S_1=S_2`, the following is true for the payoff functions the two
-player positions conforms to the following
-   \pi = (\pi_1,\pi_2)
-
-
-
-Since the game is `symmetric`, the game's `payoffs` can be represented by a
-single matrix ``A`` that specifies the payoffs for `player one`.  The payoffs
-for `player two` are provided by the transpose of matrix ``A``.
-
-For a `stage game` with ``m`` `pure strategies`, a `mixed strategy` is
-represented by a ``m``-vector whose ``i``-th component specifies the
-probability that the agent will play the ``i``-th `pure strategy`.
-
-Given two agents playing mixed strategies ``x`` and ``y``, the `expected payoffs`
-``u`` for the two agents are given by the following equations:
+This implies that the payoff accrued by a pure strategy is independent of the
+player position that plays that strategy.   Therefore, for all
+:math:`h,k \in \mathcal{S}=\mathcal{S}_1=\mathcal{S}_2`, given two pure
+strategy profiles :math:`\boldsymbol{s}_{h,k}=(h,k)` and
+:math:`\boldsymbol{s}_{k,h}=(k,h)` that are identical except that the pure
+strategies assigned to each player position have been swapped, the pure
+strategy payoff functions for the two player positions satisfy the following
+conditions:
 
 .. math::
 
-   u(x,y) &= \sum_{h=1}^{m}\sum_{k=1}^{m}x_{h}\cdot a_{h,k}\cdot y_{k} = xAy \\
-   u(y,x) &= \sum_{k=1}^{m}\sum_{h=1}^{m}y_{k}\cdot a_{k,h}\cdot x_{h} = yAx = xA^Ty
+   \pi_1(\boldsymbol{s}_{h,k}) &= \pi_2(\boldsymbol{s}_{k,h}) \\
+   \pi_1(\boldsymbol{s}_{k,h}) &= \pi_2(\boldsymbol{s}_{h,k})
+
+Since :math:`\boldsymbol{B} = \boldsymbol{A}^T` in the case of a symmetric
+two person game, the two pure strategy payoff functions
+:math:`\pi_1(\boldsymbol{s}_{h,k})` and :math:`\pi_2(\boldsymbol{s}_{h,k})`
+can be defined using a single matrix :math:`\boldsymbol{A}` as follows:
+
+.. math::
+
+   \pi_1(\boldsymbol{s}_{h,k})=a_{h,k} \\
+   \pi_2(\boldsymbol{s}_{h,k})=a_{k,h}
+ 
+Note that the order of the indices used to select the element from matrix
+:math:`\boldsymbol{A}` for :math:`\pi_2` is the reverse of the order of the
+indices used for :math:`\pi_1`.
+
+Using the definitions given above for the two pure strategy payoff functions
+for a symmetric two player game, the two mixed strategy payoff functions
+:math:`u_1(\boldsymbol{\chi}_{\boldsymbol{x},\boldsymbol{y}})` and
+:math:`u_2(\boldsymbol{\chi}_{\boldsymbol{x},\boldsymbol{y}})` can be
+defined as follows:
+
+.. math::
+
+   u_1(\boldsymbol{\chi}_{\boldsymbol{x},\boldsymbol{y}})&=
+   \boldsymbol{x} \boldsymbol{A} \boldsymbol{y}
+
+   u_2(\boldsymbol{\chi}_{\boldsymbol{x},\boldsymbol{y}})&=
+   \boldsymbol{x} \boldsymbol{A}^T \boldsymbol{y}=
+   \boldsymbol{y} \boldsymbol{A} \boldsymbol{x}
+
+Example
+-------
+TBD
 
 ------------------
 Evolutionary Games
 ------------------
+The ``egt`` package currently supports the use of `2-person symmetric` games
+as the `stage game` for evolutionary games.
+
+Given a symmetric two-person normal form game, a mixed-strategy profile
+:math:`\boldsymbol{\chi}=(\boldsymbol{x}_1,\boldsymbol{x}_2)` can be
+represented as a :math:`m \times 2` matrix where column 1 is the mixed
+strategy for player position one and column 2 is the mixed strategy for
+player position two:
+
+.. math::
+
+   \boldsymbol{\chi}=
+   \begin{pmatrix}
+   x_{1,1} & x_{2,1} \\
+   x_{1,2} & x_{2,2} \\
+   \vdots & \vdots \\
+   x_{1,m} & x_{2,m}
+   \end{pmatrix}
 
 A `strategy profile` for a population of agents playing ``n`` different mixed
 stategies is represented by a ``n`` x ``m`` matrix whose ``j``-th row
