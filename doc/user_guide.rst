@@ -326,6 +326,33 @@ TBD
 ------------------
 Evolutionary Games
 ------------------
+
+Let :math:`\mathcal{G}` be a symmetric two-player game with :math:`m` pure
+strategies.  Assume there is an infinite population of agents and that pairs
+of agents are repeatedly drawn at random to play the game :math:`\mathcal{G}`.
+Each agent is assigned one of :math:`m` `pure strategy types`.  The agent's
+type determines the pure strategy that the agent will use when it plays the
+game.
+
+A `population state` is a vector
+:math:`\boldsymbol{\sigma}=(\sigma_1,\sigma_2,\dots,m)` where each
+:math:`\sigma_h` defines the proportion of the agent population assigned to
+pure strategy type :math:`h`.
+
+When an agent is selected at random from the population, the probability that
+the agent will play pure strategy :math:`h` is equal to:
+
+.. math::
+
+   \sigma_h = \Pr(h \mid \boldsymbol{\sigma})
+
+Therefore, the probability that an agent selected randomly from an agent
+population in state :math:`\sigma` will play pure strategy :math:`h` is identical to the
+probability that a single agent playing mixed strategy :math:`\sigma` will
+play pure strategy :math:`h`.
+
+This is identical to the definition of a mixed strategy :math:`\boldsymbol{x}`.
+
 The ``egt`` package currently supports the use of `2-person symmetric` games
 as the `stage game` for evolutionary games.
 
