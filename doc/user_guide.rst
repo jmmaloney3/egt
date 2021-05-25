@@ -346,7 +346,33 @@ the agent will play pure strategy :math:`h` is equal to:
 
    \sigma_h = \Pr(h \mid \boldsymbol{\sigma})
 
-Therefore, the probability that an agent selected randomly from an agent
+This is equivalent to the probability that a single agent using
+mixed-strategy :math:`\boldsymbol{\sigma}` will play pure strategy :math:`h`.
+Therefore, the expected payout for an agent playing against an agent that
+is randomly selected from a population in state :math:`\boldsymbol{\sigma}`
+is equivalent to the expected payout for an agent playing against an
+agent that is playing mixed-strategy :math:`\boldsymbol{\sigma}`.
+
+The `population average payout` is the expected payout earned by one randomly
+selected agent playing against a second randomly selected agent. Since two
+agents selected randomly from the population to play a game can
+equivelently be treated as two agents that are both playing mixed-strategy
+:math:`\boldsymbol{\sigma}`, the population average payout is equal to the
+mixed-strategy payout when mixed strategy profile
+:math:`\boldsymbol{\chi}_{\boldsymbol{\sigma},\boldsymbol{\sigma}}=
+(\boldsymbol{\sigma},\boldsymbol{\sigma})` is in effect.
+
+.. math::
+
+   \bar{u_{\boldsymbol{\sigma}}}=\boldsymbol{\sigma}\boldsymbol{A}\boldsymbol{\sigma}
+
+
+When considering the pure strategy that an agent will play, the vector
+:math:`\sigma` can be treated as either a population
+Therefore, given an agent population in state :math:`\sigma`, the probability
+that a randomly selcted agent will play pure strategy :math:`h` is equivalent
+to the probablity that an agent playing mixed strategy 
+an agent selected randomly from an agent
 population in state :math:`\sigma` will play pure strategy :math:`h` is identical to the
 probability that a single agent playing mixed strategy :math:`\sigma` will
 play pure strategy :math:`h`.
