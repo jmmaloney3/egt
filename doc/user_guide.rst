@@ -67,21 +67,29 @@ Normal Form Games with Mixed Strategies
 ---------------------------------------
 
 A `mixed strategy` for player positon :math:`i \in \mathcal{I}` is a vector
-:math:`\boldsymbol{x_i}=(x_{i,1},x_{i,2},\dots,x_{i,m_i})` where for
+:math:`\boldsymbol{x}_i=(x_{i,1},x_{i,2},\dots,x_{i,m_i})` where for
 :math:`h \in \mathcal{S}_i`
 
 .. math::
 
-      x_{i,h} = \Pr(h \mid \boldsymbol{x_i})
+      x_{i,h} = \Pr(h \mid \boldsymbol{x}_i)
 
 This is the probability that player position :math:`\mathit{i}` plays
-pure strategy :math:`\mathit{h}` when mixed strategy :math:`\boldsymbol{x_i}`
-is used.  Note that a pure strategy can be represented as a mixed stratgy
-where one component is equal to one and the remaining components are equal
-zero.
+pure strategy :math:`\mathit{h}` when mixed strategy :math:`\boldsymbol{x}_i`
+is used.
 
-A `mixed strategy profile` :math:`\boldsymbol{\chi}=(\boldsymbol{x_1},
-\boldsymbol{x_2},\dots,\boldsymbol{x_n})` is a game configuration
+The pure strategy :math:`\mathit{h}` for player position :math:`\mathit{i}`
+can be represented as a mixed stratgy :math:`\boldsymbol{e}_{i,h}` that
+assigns probability one to pure strategy :math:`\mathit{h}` and zero
+probability to all other pure strategies.
+
+.. math::
+
+   \Pr(\mathit{h} &\mid \boldsymbol{e}_{i,h}) = 1 \\
+   \Pr(\mathit{k} &\mid \boldsymbol{e}_{i,h} \land \mathit{k}\neq\mathit{h})=0
+
+A `mixed strategy profile` :math:`\boldsymbol{\chi}=(\boldsymbol{x}_1,
+\boldsymbol{x}_2,\dots,\boldsymbol{x}_n)` is a game configuration
 in which each player position :math:`\mathit{i}` has been assigned a mixed
 strategy :math:`\boldsymbol{x_i}`.
 
@@ -323,19 +331,19 @@ Example
 -------
 TBD
 
-------------------
-Evolutionary Games
-------------------
+---------------------------------------
+Evolutionary Games with Pure Strategies
+---------------------------------------
 
 Let :math:`\mathcal{G}` be a symmetric two-player game with :math:`m` pure
 strategies.  Assume there is an infinite population of agents and that pairs
 of agents are repeatedly drawn at random to play the game :math:`\mathcal{G}`.
-Each agent is assigned one of :math:`m` `pure strategy types`.  The agent's
+Each agent is assigned one of :math:`m` `pure-strategy types`.  The agent's
 type determines the pure strategy that the agent will use when it plays the
 game.
 
-A `population state` is a vector
-:math:`\boldsymbol{\sigma}=(\sigma_1,\sigma_2,\dots,m)` where each
+A `pure-strategy population state` is a vector
+:math:`\boldsymbol{\sigma}=(\sigma_1,\sigma_2,\dots,\sigma_m)` where each
 :math:`\sigma_h` defines the proportion of the agent population assigned to
 pure strategy type :math:`h`.
 
@@ -348,10 +356,15 @@ the agent will play pure strategy :math:`h` is equal to:
 
 This is equivalent to the probability that a single agent using
 mixed-strategy :math:`\boldsymbol{\sigma}` will play pure strategy :math:`h`.
-Therefore, the expected payout for an agent playing against an agent that
-is randomly selected from a population in state :math:`\boldsymbol{\sigma}`
-is equivalent to the expected payout for an agent playing against an
-agent that is playing mixed-strategy :math:`\boldsymbol{\sigma}`.
+Therefore, the expected payout for an agent :math:`\mathit{i}` playing pure
+strategy :math:`\boldsymbol{e}_h` against an agent that is randomly selected
+from a population in state :math:`\boldsymbol{\sigma}` is equivalent to the
+expected payout for the same agent playing against an agent that is using
+mixed-strategy :math:`\boldsymbol{\sigma}`.
+
+.. math::
+
+   u_i = \boldsymbol{e}_h\boldsymbol{A}\boldsymbol{\sigma}
 
 The `population average payout` is the expected payout earned by one randomly
 selected agent playing against a second randomly selected agent. Since two
@@ -364,20 +377,25 @@ mixed-strategy payout when mixed strategy profile
 
 .. math::
 
-   \bar{u_{\boldsymbol{\sigma}}}=\boldsymbol{\sigma}\boldsymbol{A}\boldsymbol{\sigma}
+   \bar{u}_{\boldsymbol{\sigma}}=\boldsymbol{\sigma}\boldsymbol{A}\boldsymbol{\sigma}
 
+----------------------------------------
+Evolutionary Games with Mixed Strategies
+----------------------------------------
 
-When considering the pure strategy that an agent will play, the vector
-:math:`\sigma` can be treated as either a population
-Therefore, given an agent population in state :math:`\sigma`, the probability
-that a randomly selcted agent will play pure strategy :math:`h` is equivalent
-to the probablity that an agent playing mixed strategy 
-an agent selected randomly from an agent
-population in state :math:`\sigma` will play pure strategy :math:`h` is identical to the
-probability that a single agent playing mixed strategy :math:`\sigma` will
-play pure strategy :math:`h`.
+Let :math:`\mathcal{G}` be a symmetric two-player game with :math:`m` pure
+strategies.  Assume there is an infinite population of agents and that pairs
+of agents are repeatedly drawn at random to play the game :math:`\mathcal{G}`.
+Also assume that there are :math:`\mathit{n}` agent types each using
+a different mixed strategy :math:`\boldsymbol{x}_k`.
 
-This is identical to the definition of a mixed strategy :math:`\boldsymbol{x}`.
+A `population mixed-strategy profile` is a vector...
+
+A `mixed-strategy population state` is a vector
+:math:`\boldsymbol{\sigma}=(\sigma_1,\sigma_2,\dots,\sigma_n)` where each
+:math:`\sigma_k` defines the proportion of the agent population assigned to
+mixed strategy :math:`\boldsymbol{x}_k`.
+
 
 The ``egt`` package currently supports the use of `2-person symmetric` games
 as the `stage game` for evolutionary games.
