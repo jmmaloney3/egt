@@ -336,11 +336,30 @@ Evolutionary Games with Pure Strategies
 ---------------------------------------
 
 Let :math:`\mathcal{G}` be a symmetric two-player game with :math:`m` pure
-strategies.  Assume there is an infinite population of agents and that pairs
-of agents are repeatedly drawn at random to play the game :math:`\mathcal{G}`.
-Each agent is assigned one of :math:`m` `pure-strategy types`.  The agent's
-type determines the pure strategy that the agent will use when it plays the
-game.
+strategies.  Assume there is an infinite population :math:`\mathcal{A}` of
+agents and that pairs of agents are repeatedly drawn at random to play the
+`stage game` :math:`\mathcal{G}`. Each agent is assigned one of
+:math:`m` `pure-strategy types`.  The agent's type determines the pure
+strategy that the agent will use when it plays the game.
+
+A `population pure-strategy profile` is a :math:`m \times m` identity matrix
+:math:`\boldsymbol{S}` whose columns are the :math:`\mathit{m}` mixed 
+strategies :math:`\boldsymbol{e}_h` representing the :math:`\mathit{m}` pure
+strategies played by the agents in the population - column :math:`\mathit{h}`
+defines mixed strategy :math:`\boldsymbol{e}_h`.
+
+
+.. math::
+
+   \boldsymbol{S}=
+   (\boldsymbol{e}_1 \hdots \boldsymbol{e}_h \hdots \boldsymbol{e}_m)=
+   \begin{pmatrix}
+   1 & \hdots & 0 & \hdots & 0 \\
+   \vdots  & \vdots & \vdots  & \vdots & \vdots  \\
+   0 & \hdots & 1 & \hdots & 0 \\
+   \vdots  & \vdots & \vdots  & \vdots & \vdots  \\
+   0 & \hdots & 0 & \hdots & 1 \\
+   \end{pmatrix}
 
 A `pure-strategy population state` is a vector
 :math:`\boldsymbol{\sigma}=(\sigma_1,\sigma_2,\dots,\sigma_m)` where each
@@ -356,45 +375,122 @@ the agent will play pure strategy :math:`h` is equal to:
 
 This is equivalent to the probability that a single agent using
 mixed-strategy :math:`\boldsymbol{\sigma}` will play pure strategy :math:`h`.
-Therefore, the expected payout for an agent :math:`\mathit{i}` playing pure
-strategy :math:`\boldsymbol{e}_h` against an agent that is randomly selected
-from a population in state :math:`\boldsymbol{\sigma}` is equivalent to the
-expected payout for the same agent playing against an agent that is using
-mixed-strategy :math:`\boldsymbol{\sigma}`.
+
+Given payout matrix :math:`\boldsymbol{A}`, the expected payout for an agent
+playing pure strategy :math:`\boldsymbol{e}_h` against an agent that is
+randomly selected from a population in state :math:`\boldsymbol{\sigma}` is
+equivalent to the expected payout for the same agent playing against an agent
+that is using mixed-strategy :math:`\boldsymbol{\sigma}`.
 
 .. math::
 
-   u_i = \boldsymbol{e}_h\boldsymbol{A}\boldsymbol{\sigma}
+   u_h = \boldsymbol{e}_h\boldsymbol{A}\boldsymbol{\sigma}
 
-The `population average payout` is the expected payout earned by one randomly
-selected agent playing against a second randomly selected agent. Since two
-agents selected randomly from the population to play a game can
+(define vector of payouts for all agent types)
+
+The `population average payout` is the expected payout earned by
+one randomly selected agent playing against a second randomly selected agent.
+Since two agents selected randomly from the population to play a game can
 equivelently be treated as two agents that are both playing mixed-strategy
 :math:`\boldsymbol{\sigma}`, the population average payout is equal to the
 mixed-strategy payout when mixed strategy profile
-:math:`\boldsymbol{\chi}_{\boldsymbol{\sigma},\boldsymbol{\sigma}}=
-(\boldsymbol{\sigma},\boldsymbol{\sigma})` is in effect.
+:math:`(\boldsymbol{\sigma},\boldsymbol{\sigma})` is in effect.
 
 .. math::
 
-   \bar{u}_{\boldsymbol{\sigma}}=\boldsymbol{\sigma}\boldsymbol{A}\boldsymbol{\sigma}
+   \bar{u}_{\boldsymbol{\sigma}}=
+   \mathop{\mathbb{E}}\limits_{\boldsymbol{a} \in \mathcal{A}}
+   [\mathit{u}_a \mid \boldsymbol{\sigma}]=
+   \boldsymbol{\sigma}\boldsymbol{A}\boldsymbol{\sigma}
 
 ----------------------------------------
 Evolutionary Games with Mixed Strategies
 ----------------------------------------
 
 Let :math:`\mathcal{G}` be a symmetric two-player game with :math:`m` pure
-strategies.  Assume there is an infinite population of agents and that pairs
-of agents are repeatedly drawn at random to play the game :math:`\mathcal{G}`.
-Also assume that there are :math:`\mathit{n}` agent types each using
-a different mixed strategy :math:`\boldsymbol{x}_k`.
+strategies.  Assume there is an infinite population :math:`\mathcal{A}` of
+agents and that pairs of agents are repeatedly drawn at random to play the
+`stage game` :math:`\mathcal{G}`. Also assume that there are :math:`\mathit{n}`
+agent types each using a different mixed strategy :math:`\boldsymbol{x}_k`.
 
-A `population mixed-strategy profile` is a vector...
+A `population mixed-strategy profile` is a :math:`m \times n` matrix
+:math:`\boldsymbol{X}` whose columns define the :math:`\mathit{n}` mixed 
+strategies played by the agents in the population - column :math:`\mathit{k}`
+defines mixed strategy :math:`\boldsymbol{x}_k`.
+
+.. math::
+
+   \boldsymbol{X}=
+   \begin{pmatrix}
+   x_{1,1} & \hdots & x_{k,1} & \hdots & x_{n,1} \\
+   \vdots  & \vdots & \vdots  & \vdots & \vdots  \\
+   x_{1,h} & \hdots & x_{k,h} & \hdots & x_{n,h} \\
+   \vdots  & \vdots & \vdots  & \vdots & \vdots  \\
+   x_{1,m} & \hdots & x_{k,m} & \hdots & x_{n,m} \\
+   \end{pmatrix}
 
 A `mixed-strategy population state` is a vector
 :math:`\boldsymbol{\sigma}=(\sigma_1,\sigma_2,\dots,\sigma_n)` where each
 :math:`\sigma_k` defines the proportion of the agent population assigned to
 mixed strategy :math:`\boldsymbol{x}_k`.
+
+When an agent is selected at random from the population, the probability that
+the agent will play mixed strategy :math:`\boldsymbol{x}_k` is equal to:
+
+.. math::
+
+   \sigma_{\boldsymbol{x}_k} = \Pr(\boldsymbol{x}_k \mid \boldsymbol{\sigma})
+
+The probability that the randomly selected agent will play pure strategy
+:math:`\mathit{h}` is equal to:
+
+.. math::
+
+   \Pr(h \mid \boldsymbol{\sigma})
+   &= \sum_{k=1}^n{\Pr(h \mid \boldsymbol{x}_k)
+                  \Pr(\boldsymbol{x}_k \mid \boldsymbol{\sigma})} \\
+   &= \sum_{k=1}^n{x_{k,h}\sigma_k}
+
+This is equivalent to the probability that a single agent using
+mixed-strategy :math:`\boldsymbol{X}\boldsymbol{\sigma}` will play pure
+strategy :math:`h`.
+
+Given payout matrix :math:`\boldsymbol{A}`, the expected payout for an agent
+playing mixed strategy :math:`\boldsymbol{x}_k` against an agent that is
+randomly selected from a population in state :math:`\boldsymbol{\sigma}` is
+equivalent to the expected payout for the same agent playing against an agent
+that is using mixed-strategy :math:`\boldsymbol{X}\boldsymbol{\sigma}`.
+
+.. math::
+
+   u_{\boldsymbol{x}_k} =
+   \boldsymbol{x}_k\boldsymbol{A}\boldsymbol{X}\boldsymbol{\sigma}
+
+(define vector of payouts for all agent types)
+
+The `population average payout` is the expected payout earned by
+one randomly selected agent playing against a second randomly selected agent.
+Since two agents selected randomly from the population to play a game can
+equivelently be treated as two agents that are both playing mixed-strategy
+:math:`\boldsymbol{X}\boldsymbol{\sigma}`, the population average payout is
+equal to the mixed-strategy payout when mixed strategy profile
+:math:`(\boldsymbol{X}\boldsymbol{\sigma},\boldsymbol{X}\boldsymbol{\sigma})`
+is in effect.
+
+.. math::
+
+   \bar{u}_{\boldsymbol{\sigma}}=
+   \mathop{\mathbb{E}}\limits_{\boldsymbol{a} \in \mathcal{A}}
+   [\mathit{u}_a \mid \boldsymbol{\sigma}, \boldsymbol{X}]=
+   \boldsymbol{X}\boldsymbol{\sigma}\boldsymbol{A}\boldsymbol{X}\boldsymbol{\sigma}
+
+---------------------
+Evolutionary Dynamics
+---------------------
+Let :math:`\mathcal{G}` be a symmetric two-player game with :math:`m` pure
+strategies that is the `stage game` for an `evolutionary game` played by an
+infinite population :math:`\mathcal{A}` of agents.  Assume that the population
+of agents play the game repeatedly over time periods :math:`t = 1, 2, \dots`.
 
 
 The ``egt`` package currently supports the use of `2-person symmetric` games
