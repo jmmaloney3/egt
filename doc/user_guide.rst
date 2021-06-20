@@ -466,7 +466,52 @@ mixed-strategy payout when mixed strategy profile
 
 Example
 -------
-TBD
+
+Consider the case where a population of agents is playing the prisoner's
+dilemma game presented in the previous example.  By definition, the population
+pure-strategy profile is given by the :math:`2 \times 2` identify matrix:
+
+.. math::
+
+   \boldsymbol{S} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}
+
+Assume that the following population state vector :math:`\boldsymbol{\sigma}`
+specifies how the population is distributed among the two strategies:
+
+.. math::
+
+   \boldsymbol{\sigma} = (0.25, 0.75)
+
+The expected payouts for the two pure-strategy types are the following:
+
+.. math::
+
+   u_1 =& \boldsymbol{e}_1\boldsymbol{A}\boldsymbol{\sigma} \\
+   =&(1 \cdot 3 \cdot 0.25) +
+     (1 \cdot 0 \cdot 0.75) + \\
+   & (0 \cdot 5 \cdot 0.25) +
+     (0 \cdot 1 \cdot 0.75)   \\
+   =&0.75
+
+   u_2 =& \boldsymbol{e}_2\boldsymbol{A}\boldsymbol{\sigma} \\
+   =&(0 \cdot 3 \cdot 0.25) +
+     (0 \cdot 0 \cdot 0.75) + \\
+   & (1 \cdot 5 \cdot 0.25) +
+     (1 \cdot 1 \cdot 0.75)   \\
+   =&2.00
+
+The population average payout is equal to the following:
+
+.. math::
+
+   \bar{u}_{\boldsymbol{\sigma}}
+   =&\boldsymbol{\sigma}\boldsymbol{A}\boldsymbol{\sigma} \\
+   =&(0.25 \cdot 3 \cdot 0.25) +
+     (0.25 \cdot 0 \cdot 0.75) + \\
+   & (0.75 \cdot 5 \cdot 0.25) +
+     (0.75 \cdot 1 \cdot 0.75)   \\
+   =&(0.25 \cdot u_1) + (0.75 \cdot u_2) \\
+   =&1.6875
 
 ----------------------------------------
 Evolutionary Games with Mixed Strategies
