@@ -329,7 +329,60 @@ defined as follows:
 
 Example
 -------
-TBD
+Consider the `prisoner's dilemma`, a symmetric two player game with two
+pure strategies, `cooperate` and `defect`, and the following generalized
+payout matrix :math:`\boldsymbol{A}`:
+
+.. math::
+
+   \boldsymbol{A}&=\begin{pmatrix} R & S \\ T & P \end{pmatrix}  \\
+   \boldsymbol{A}^T&=\begin{pmatrix} R & T \\ S & P \end{pmatrix}
+
+where the payouts satisfy the following condition:
+
+.. math::
+
+   \mathit{T} > \mathit{R} > \mathit{P} > \mathit{S}
+
+Consider a specific case that uses the following payout matrix:
+
+.. math::
+
+   \boldsymbol{A}=\begin{pmatrix} 3 & 0 \\ 5 & 1 \end{pmatrix}
+
+Given the pure-strategy profile :math:`\boldsymbol{s}=(1,2)`, the
+pure-strategy payoffs for the two strategies are the following:
+
+.. math::
+
+   \pi_1(\boldsymbol{s}) = a_{1,2} = 0 \\
+   \pi_2(\boldsymbol{s}) = a_{2,1} = 5
+
+Given the mixed-strategy profile
+:math:`\boldsymbol{\chi}=(\boldsymbol{x_1},\boldsymbol{x_2})` where
+
+.. math::
+
+   \boldsymbol{x_1}&=(0.65,0.35) \\
+   \boldsymbol{x_2}&=(0.25,0.75)
+
+the mixed-strategy payouts for the two strategies are the following:
+
+.. math::
+
+   u_1(\boldsymbol{\chi})=&\boldsymbol{x_1}\boldsymbol{A}\boldsymbol{x_2} \\
+   =&(0.65 \cdot 3 \cdot 0.25) +
+     (0.65 \cdot 0 \cdot 0.75) + \\
+   & (0.35 \cdot 5 \cdot 0.25) +
+     (0.35 \cdot 1 \cdot 0.75)   \\
+   =&1.15
+
+   u_2(\boldsymbol{\chi})=&\boldsymbol{x_1}\boldsymbol{A}^T\boldsymbol{x_2} \\
+   =&(0.65 \cdot 3 \cdot 0.25) +
+     (0.65 \cdot 5 \cdot 0.75) + \\
+   & (0.35 \cdot 0 \cdot 0.25) +
+     (0.35 \cdot 1 \cdot 0.75)   \\
+   =&3.15
 
 ---------------------------------------
 Evolutionary Games with Pure Strategies
