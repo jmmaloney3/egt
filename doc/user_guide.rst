@@ -386,7 +386,15 @@ that is using mixed-strategy :math:`\boldsymbol{\sigma}`.
 
    u_h = \boldsymbol{e}_h\boldsymbol{A}\boldsymbol{\sigma}
 
-(define vector of payouts for all agent types)
+Replacing the vector :math:`\boldsymbol{e}_h` with the population pure-strategy
+profile matrix :math:`\boldsymbol{S}` in the previous equation provides a
+matrix equation that generates the vector :math:`\boldsymbol{u}` of expected
+payouts for all pure strategy types:
+
+.. math::
+
+   \boldsymbol{u} = (u_1, u_2, \dots, u_m) = 
+   \boldsymbol{S}\boldsymbol{A}\boldsymbol{\sigma}
 
 The `population average payout` is the expected payout earned by
 one randomly selected agent playing against a second randomly selected agent.
@@ -402,6 +410,10 @@ mixed-strategy payout when mixed strategy profile
    \mathop{\mathbb{E}}\limits_{\boldsymbol{a} \in \mathcal{A}}
    [\mathit{u}_a \mid \boldsymbol{\sigma}]=
    \boldsymbol{\sigma}\boldsymbol{A}\boldsymbol{\sigma}
+
+Example
+-------
+TBD
 
 ----------------------------------------
 Evolutionary Games with Mixed Strategies
@@ -449,7 +461,7 @@ The probability that the randomly selected agent will play pure strategy
    \Pr(h \mid \boldsymbol{\sigma})
    &= \sum_{k=1}^n{\Pr(h \mid \boldsymbol{x}_k)
                   \Pr(\boldsymbol{x}_k \mid \boldsymbol{\sigma})} \\
-   &= \sum_{k=1}^n{x_{k,h}\sigma_k}
+   &= \sum_{k=1}^n{x_{k,h} \cdot \sigma_k}
 
 This is equivalent to the probability that a single agent using
 mixed-strategy :math:`\boldsymbol{X}\boldsymbol{\sigma}` will play pure
@@ -466,7 +478,15 @@ that is using mixed-strategy :math:`\boldsymbol{X}\boldsymbol{\sigma}`.
    u_{\boldsymbol{x}_k} =
    \boldsymbol{x}_k\boldsymbol{A}\boldsymbol{X}\boldsymbol{\sigma}
 
-(define vector of payouts for all agent types)
+Replacing the vector :math:`\boldsymbol{x}_k` with the population
+mixed-strategy profile matrix :math:`\boldsymbol{X}` in the previous equation
+provides a matrix equation that generates the vector :math:`\boldsymbol{u}` of
+expected payouts for all mixed strategy types:
+
+.. math::
+
+   \boldsymbol{u} = (u_1, u_2, \dots, u_n) = 
+   \boldsymbol{X}\boldsymbol{A}\boldsymbol{X}\boldsymbol{\sigma}
 
 The `population average payout` is the expected payout earned by
 one randomly selected agent playing against a second randomly selected agent.
@@ -490,8 +510,32 @@ Evolutionary Dynamics
 Let :math:`\mathcal{G}` be a symmetric two-player game with :math:`m` pure
 strategies that is the `stage game` for an `evolutionary game` played by an
 infinite population :math:`\mathcal{A}` of agents.  Assume that the population
-of agents play the game repeatedly over time periods :math:`t = 1, 2, \dots`.
+of agents plays the game repeatedly over time periods
+:math:`\mathit{t} = 1, 2, \dots`. At the end of each time period, the
+population evolves so that the percentage of the population playing strategy
+:math:`\boldsymbol{x}_k` increases if the expected payout :math:`\mathit{u}_k`
+for that strategy is greater than the population average payout
+:math:`\bar{u}_{\boldsymbol{\sigma}}` and decreases otherwise.
 
+The `discrete time replicator dynamics` are frequenty used to determine how
+a population evolves after each time step.  For each strategy, the proporation
+of the population using that stragegy is changed by an amount equal to the
+percentage of the population average payout achieved by the strategy's
+expected payout.
+
+The change in the proportion of the population playing strategy
+:math:`\mathit{k}`, is equal to:
+
+.. math::
+   \Delta_{\sigma_k} = \frac{\mathit{u}_k}{\bar{u}_{\boldsymbol{\sigma}}}
+
+Therefore, the proportion of the population using strategy :math:`{\mathit{k}}`
+at time step :math:`\mathit{t}+1` is equal to:
+
+.. math::
+   \sigma_{k,t+1} = \Delta_{\sigma_k,t} \cdot \sigma_{k,t}
+                  = \frac{\mathit{u}_{k,t}}{\bar{u}_{\boldsymbol{\sigma},t}}
+                    \cdot \sigma_{k,t}
 
 The ``egt`` package currently supports the use of `2-person symmetric` games
 as the `stage game` for evolutionary games.
