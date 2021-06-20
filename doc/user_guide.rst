@@ -602,6 +602,75 @@ is in effect.
    [\mathit{u}_a \mid \boldsymbol{\sigma}, \boldsymbol{X}]=
    \boldsymbol{X}\boldsymbol{\sigma}\boldsymbol{A}\boldsymbol{X}\boldsymbol{\sigma}
 
+Example
+-------
+Consider another case where a population of agents is playing the prisoner's
+dilemma game presented in previous examples. In this case, assume that there
+are three different agent types playing the following mixed strategies:
+
+.. math::
+
+   \boldsymbol{x}_1 = (0.25, 0.75) \\
+   \boldsymbol{x}_2 = (0.50, 0.50) \\
+   \boldsymbol{x}_3 = (0.75, 0.25)
+
+The population mixed-strategy profile is given by the following
+:math:`2 \times 3` matrix:
+
+.. math::
+
+   \boldsymbol{X} =
+   \begin{pmatrix}
+   0.25 & 0.5 & 0.75 \\
+   0.75 & 0.5 & 0.25
+   \end{pmatrix}
+
+Assume that the following population state vector :math:`\boldsymbol{\sigma}`
+specifies how the population is distributed among the three strategies:
+
+.. math::
+
+   \boldsymbol{\sigma} = (0.2, 0.5, 0.3)
+
+The expected payouts for the three mixed-strategy types are the following:
+
+.. math::
+
+   \boldsymbol{A}\boldsymbol{X}\boldsymbol{\sigma} =&
+   \begin{pmatrix}3 & 0 \\ 5 & 1\end{pmatrix}
+   \begin{pmatrix}0.25 & 0.5 & 0.75 \\ 0.75 & 0.5 & 0.25\end{pmatrix}
+   \begin{pmatrix}0.2 \\ 0.5 \\ 0.3\end{pmatrix} \\
+   =&
+   \begin{pmatrix}0.75 & 1.5 & 2.25 \\ 2 & 3 & 4\end{pmatrix}
+   \begin{pmatrix}0.2 \\ 0.5 \\ 0.3\end{pmatrix} \\
+   =&
+   \begin{pmatrix}1.575 \\ 3.1\end{pmatrix}
+
+   u_1 =& \boldsymbol{x}_1\boldsymbol{A}\boldsymbol{X}\boldsymbol{\sigma} \\
+   =&
+   \begin{pmatrix}0.25 & 0.75\end{pmatrix}
+   \begin{pmatrix}1.575 \\ 3.1\end{pmatrix}
+
+   u_2 =& \boldsymbol{x}_2\boldsymbol{A}\boldsymbol{X}\boldsymbol{\sigma} \\
+   =&
+   \begin{pmatrix}0.5 & 0.5\end{pmatrix}
+   \begin{pmatrix}1.575 \\ 3.1\end{pmatrix}
+
+   u_3 =& \boldsymbol{x}_3\boldsymbol{A}\boldsymbol{X}\boldsymbol{\sigma} \\
+   =&
+   \begin{pmatrix}0.75 & 0.25\end{pmatrix}
+   \begin{pmatrix}1.575 \\ 3.1\end{pmatrix}
+
+The population average payout is equal to the following:
+
+.. math::
+
+   \bar{u}_{\boldsymbol{\sigma}}
+   =&\boldsymbol{X}\boldsymbol{\sigma}\boldsymbol{A}
+   \boldsymbol{X}\boldsymbol{\sigma} \\
+   =& \\
+   =&TBD
+
 ---------------------
 Evolutionary Dynamics
 ---------------------
