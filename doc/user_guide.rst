@@ -389,10 +389,10 @@ Evolutionary Games with Pure Strategies
 ---------------------------------------
 
 Let :math:`\mathcal{G}` be a symmetric two-player game with :math:`m` pure
-strategies.  Assume there is an infinite population :math:`\mathcal{A}` of
-agents and that pairs of agents are repeatedly drawn at random to play the
-`stage game` :math:`\mathcal{G}`. Each agent is assigned one of
-:math:`m` `pure-strategy types`.  The agent's type determines the pure
+strategies.  Assume there is a `well-mixed` infinite population
+:math:`\mathcal{A}` of agents and that pairs of agents are repeatedly drawn at
+random to play the `stage game` :math:`\mathcal{G}`. Each agent is assigned
+one of :math:`m` `pure-strategy types`.  The agent's type determines the pure
 strategy that the agent will use when it plays the game.
 
 A `population pure-strategy profile` is a :math:`m \times m` identity matrix
@@ -518,10 +518,11 @@ Evolutionary Games with Mixed Strategies
 ----------------------------------------
 
 Let :math:`\mathcal{G}` be a symmetric two-player game with :math:`m` pure
-strategies.  Assume there is an infinite population :math:`\mathcal{A}` of
-agents and that pairs of agents are repeatedly drawn at random to play the
-`stage game` :math:`\mathcal{G}`. Also assume that there are :math:`\mathit{n}`
-agent types each using a different mixed strategy :math:`\boldsymbol{x}_k`.
+strategies.  Assume there is a `well-mixed` infinite population
+:math:`\mathcal{A}` of agents and that pairs of agents are repeatedly drawn at
+random to play the `stage game` :math:`\mathcal{G}`. Also assume that there
+are :math:`\mathit{n}` agent types each using a different mixed strategy
+:math:`\boldsymbol{x}_k`.
 
 A `population mixed-strategy profile` is a :math:`m \times n` matrix
 :math:`\boldsymbol{X}` whose columns define the :math:`\mathit{n}` mixed 
@@ -562,19 +563,24 @@ The probability that the randomly selected agent will play pure strategy
    &= \sum_{k=1}^n{x_{k,h} \cdot \sigma_k}
 
 This is equivalent to the probability that a single agent using
-mixed-strategy :math:`\boldsymbol{X}\boldsymbol{\sigma}` will play pure
-strategy :math:`h`.
+the `population mixed-strategy` :math:`\boldsymbol{x}_{\boldsymbol{\sigma}}`
+will play pure strategy :math:`h`.
+
+.. math::
+
+   \boldsymbol{x}_{\boldsymbol{\sigma}}=\boldsymbol{X}\boldsymbol{\sigma}
 
 Given payout matrix :math:`\boldsymbol{A}`, the expected payout for an agent
 playing mixed strategy :math:`\boldsymbol{x}_k` against an agent that is
 randomly selected from a population in state :math:`\boldsymbol{\sigma}` is
 equivalent to the expected payout for the same agent playing against an agent
-that is using mixed-strategy :math:`\boldsymbol{X}\boldsymbol{\sigma}`.
+that is using population mixed-strategy
+:math:`\boldsymbol{x}_{\boldsymbol{\sigma}}`.
 
 .. math::
 
    u_{\boldsymbol{x}_k} =
-   \boldsymbol{x}_k\boldsymbol{A}\boldsymbol{X}\boldsymbol{\sigma}
+   \boldsymbol{x}_k\boldsymbol{A}\boldsymbol{x}_{\boldsymbol{\sigma}}
 
 Replacing the vector :math:`\boldsymbol{x}_k` with the population
 mixed-strategy profile matrix :math:`\boldsymbol{X}` in the previous equation
@@ -584,23 +590,23 @@ expected payouts for all mixed strategy types:
 .. math::
 
    \boldsymbol{u} = (u_1, u_2, \dots, u_n) = 
-   \boldsymbol{X}\boldsymbol{A}\boldsymbol{X}\boldsymbol{\sigma}
+   \boldsymbol{X}\boldsymbol{A}\boldsymbol{x}_{\boldsymbol{\sigma}}
 
 The `population average payout` is the expected payout earned by
 one randomly selected agent playing against a second randomly selected agent.
 Since two agents selected randomly from the population to play a game can
-equivelently be treated as two agents that are both playing mixed-strategy
-:math:`\boldsymbol{X}\boldsymbol{\sigma}`, the population average payout is
-equal to the mixed-strategy payout when mixed strategy profile
-:math:`(\boldsymbol{X}\boldsymbol{\sigma},\boldsymbol{X}\boldsymbol{\sigma})`
+equivelently be treated as two agents that are both playing the population
+mixed-strategy :math:`\boldsymbol{x}_{\boldsymbol{\sigma}}`, the population
+average payout is equal to the mixed-strategy payout when mixed strategy profile
+:math:`(\boldsymbol{x}_{\boldsymbol{\sigma}},\boldsymbol{x}_{\boldsymbol{\sigma}})`
 is in effect.
 
 .. math::
 
    \bar{u}_{\boldsymbol{\sigma}}=
    \mathop{\mathbb{E}}\limits_{\boldsymbol{a} \in \mathcal{A}}
-   [\mathit{u}_a \mid \boldsymbol{\sigma}, \boldsymbol{X}]=
-   \boldsymbol{X}\boldsymbol{\sigma}\boldsymbol{A}\boldsymbol{X}\boldsymbol{\sigma}
+   [\mathit{u}_a \mid \boldsymbol{x}_{\boldsymbol{\sigma}}]=
+   \boldsymbol{x}_{\boldsymbol{\sigma}}\boldsymbol{A}\boldsymbol{x}_{\boldsymbol{\sigma}}
 
 Example
 -------
@@ -626,50 +632,144 @@ The population mixed-strategy profile is given by the following
    \end{pmatrix}
 
 Assume that the following population state vector :math:`\boldsymbol{\sigma}`
-specifies how the population is distributed among the three strategies:
+specifies how the population is distributed among the three mixed strategies:
 
 .. math::
 
    \boldsymbol{\sigma} = (0.2, 0.5, 0.3)
 
+The population mixed-strategy :math:`\boldsymbol{x}_{\boldsymbol{\sigma}}`
+is the following:
+
+.. math::
+
+   \boldsymbol{x}_{\boldsymbol{\sigma}}=&\boldsymbol{X}\boldsymbol{\sigma} \\
+   =&
+   \begin{pmatrix}0.25 & 0.5 & 0.75 \\ 0.75 & 0.5 & 0.25\end{pmatrix}
+   \begin{pmatrix}0.2 \\ 0.5 \\ 0.3\end{pmatrix} \\
+   =&
+   \begin{pmatrix}0.525 \\ 0.475\end{pmatrix}
+
 The expected payouts for the three mixed-strategy types are the following:
 
 .. math::
 
-   \boldsymbol{A}\boldsymbol{X}\boldsymbol{\sigma} =&
+   \boldsymbol{A}\boldsymbol{x}_{\boldsymbol{\sigma}} =&
    \begin{pmatrix}3 & 0 \\ 5 & 1\end{pmatrix}
-   \begin{pmatrix}0.25 & 0.5 & 0.75 \\ 0.75 & 0.5 & 0.25\end{pmatrix}
-   \begin{pmatrix}0.2 \\ 0.5 \\ 0.3\end{pmatrix} \\
-   =&
-   \begin{pmatrix}0.75 & 1.5 & 2.25 \\ 2 & 3 & 4\end{pmatrix}
-   \begin{pmatrix}0.2 \\ 0.5 \\ 0.3\end{pmatrix} \\
-   =&
+   \begin{pmatrix}0.525 \\ 0.475\end{pmatrix}
+   =
    \begin{pmatrix}1.575 \\ 3.1\end{pmatrix}
 
-   u_1 =& \boldsymbol{x}_1\boldsymbol{A}\boldsymbol{X}\boldsymbol{\sigma} \\
-   =&
+   u_1 =& \boldsymbol{x}_1\boldsymbol{A}\boldsymbol{x}_{\boldsymbol{\sigma}}
+   =
    \begin{pmatrix}0.25 & 0.75\end{pmatrix}
    \begin{pmatrix}1.575 \\ 3.1\end{pmatrix}
-
-   u_2 =& \boldsymbol{x}_2\boldsymbol{A}\boldsymbol{X}\boldsymbol{\sigma} \\
-   =&
-   \begin{pmatrix}0.5 & 0.5\end{pmatrix}
+   =2.71875
+   
+   u_2 =& \boldsymbol{x}_2\boldsymbol{A}\boldsymbol{x}_{\boldsymbol{\sigma}}
+   =
+   \begin{pmatrix}0.50 & 0.50\end{pmatrix}
    \begin{pmatrix}1.575 \\ 3.1\end{pmatrix}
+   =2.3375
 
-   u_3 =& \boldsymbol{x}_3\boldsymbol{A}\boldsymbol{X}\boldsymbol{\sigma} \\
-   =&
+   u_3 =& \boldsymbol{x}_3\boldsymbol{A}\boldsymbol{x}_{\boldsymbol{\sigma}}
+   =
    \begin{pmatrix}0.75 & 0.25\end{pmatrix}
    \begin{pmatrix}1.575 \\ 3.1\end{pmatrix}
+   =1.95624
 
 The population average payout is equal to the following:
 
 .. math::
 
    \bar{u}_{\boldsymbol{\sigma}}
-   =&\boldsymbol{X}\boldsymbol{\sigma}\boldsymbol{A}
-   \boldsymbol{X}\boldsymbol{\sigma} \\
-   =& \\
-   =&TBD
+   =&\boldsymbol{x}_{\boldsymbol{\sigma}}\boldsymbol{A}
+   \boldsymbol{x}_{\boldsymbol{\sigma}}
+   =
+   \begin{pmatrix}0.525 & 0.475\end{pmatrix}
+   \begin{pmatrix}3 & 0 \\ 5 & 1\end{pmatrix}
+   \begin{pmatrix}0.525 \\ 0.475\end{pmatrix} \\
+   =&
+   \begin{pmatrix}0.525 & 0.475\end{pmatrix}
+   \begin{pmatrix}1.575 \\ 3.1\end{pmatrix}
+   =2.299375
+
+------------------------------
+Transformed Evolutionary Games
+------------------------------
+
+Let :math:`\mathcal{G}` be a symmetric two-player game with :math:`\mathit{m}`
+pure strategies that is the `stage game` for an evolutionary game played by a
+population of agents playing :math:`\mathit{n}` different mixed strategies.
+
+The game can be transformed into an asymmetric game :math:`\mathcal{G}^*`
+where the strategies played by position one are the :math:`\mathit{m}` pure
+strategies defined by the original game :math:`\mathcal{G}` and the strategies
+played by position two are the :math:`\mathit{n}` mixed strategies played by
+the agents in the population.
+
+Let :math:`\boldsymbol{A}^*` be the payout matrix for the transformed game
+:math:`\mathcal{G}^*`. The entry in row :math:`\mathit{h}` and column
+:math:`\mathit{k}` in matrix :math:`\boldsymbol{A}^*` is the expected payout
+for an agent in position one playing pure strategy :math:`\boldsymbol{e}_h`
+against an opponent in position two playing mixed strategy
+:math:`\boldsymbol{x}_{k}`.
+
+.. math::
+
+   \mathit{a}^*_{h,k} =
+   \mathop{\mathbb{E}}[\mathit{u}(\boldsymbol{\chi})
+   \mid
+   \boldsymbol{\chi}=(\boldsymbol{e}_h, \boldsymbol{x}_k)] =
+   \sum_{j=0}^m a_{h,j} \cdot x_{k,j}
+
+Given the payout matrix :math:`\boldsymbol{A}` for the original game and the
+population mixed-strategy profile matrix :math:`\boldsymbol{X}`, the payout
+matrix :math:`\boldsymbol{A}^*` for the transformed game is the following:
+
+.. math::
+
+   \boldsymbol{A}^*=\boldsymbol{A}\boldsymbol{X}
+
+In the context of the transformed game :math:`\mathcal{G}^*`, the population
+state vector :math:`\boldsymbol{\sigma}`, defines the population mixed-strategy
+for position two.
+
+Given payout matrix :math:`\boldsymbol{A}^*`, the expected payout for an agent
+playing mixed strategy :math:`\boldsymbol{x}_k` against an agent that is randomly
+selected from a population in state :math:`\boldsymbol{\sigma}` is equivalent to
+the expected payout for the same agent playing against an agent that is using
+population mixed-strategy :math:`\boldsymbol{\sigma}`.
+
+.. math::
+
+   u_{\boldsymbol{x}_k} =
+   \boldsymbol{x}_k\boldsymbol{A}^*\boldsymbol{\sigma}
+
+Replacing the vector :math:`\boldsymbol{x}_k` with the population
+mixed-strategy profile matrix :math:`\boldsymbol{X}` in the previous equation
+provides a matrix equation that generates the vector :math:`\boldsymbol{u}` of
+expected payouts for all mixed strategy types:
+
+.. math::
+
+   \boldsymbol{u} = (u_1, u_2, \dots, u_n) = 
+   \boldsymbol{X}\boldsymbol{A}^*\boldsymbol{\sigma}
+
+The `population average payout` is the expected payout earned by
+one randomly selected agent playing against a second randomly selected agent.
+Since two agents selected randomly from the population to play a game can
+equivelently be treated as two agents that are both playing the population
+mixed-strategy :math:`\boldsymbol{\sigma}`, the population average payout is
+equal to the mixed-strategy payout when mixed strategy profile
+:math:`(\boldsymbol{\sigma},\boldsymbol{\sigma})` is in effect.
+
+.. math::
+
+   \bar{u}_{\boldsymbol{\sigma}}=
+   \mathop{\mathbb{E}}\limits_{\boldsymbol{a} \in \mathcal{A}}
+   [\mathit{u}_a \mid \boldsymbol{\sigma}]=
+   \boldsymbol{\sigma}\boldsymbol{A}^*\boldsymbol{\sigma}
 
 ---------------------
 Evolutionary Dynamics
@@ -704,62 +804,11 @@ at time step :math:`\mathit{t}+1` is equal to:
                   = \frac{\mathit{u}_{k,t}}{\bar{u}_{\boldsymbol{\sigma},t}}
                     \cdot \sigma_{k,t}
 
+Example
+-------
+
+TBD
+
+
 The ``egt`` package currently supports the use of `2-person symmetric` games
 as the `stage game` for evolutionary games.
-
-Given a symmetric two-person normal form game, a mixed-strategy profile
-:math:`\boldsymbol{\chi}=(\boldsymbol{x}_1,\boldsymbol{x}_2)` can be
-represented as a :math:`m \times 2` matrix where column 1 is the mixed
-strategy for player position one and column 2 is the mixed strategy for
-player position two:
-
-.. math::
-
-   \boldsymbol{\chi}=
-   \begin{pmatrix}
-   x_{1,1} & x_{2,1} \\
-   x_{1,2} & x_{2,2} \\
-   \vdots & \vdots \\
-   x_{1,m} & x_{2,m}
-   \end{pmatrix}
-
-A `strategy profile` for a population of agents playing ``n`` different mixed
-stategies is represented by a ``n`` x ``m`` matrix whose ``j``-th row
-represents the mixed strategy for the ``j``-th agent type.
-
-A `population state` for an infinite population of agents playing ``n``
-different mixed strategies is represented by a ``n``-vector whose ``j``-th
-component represents the proportion of the population playing the ``j``-th
-mixed strategy in the population's `strategy profile`.
-
-Given a `strategy profile` matrix ``X``, a `population state` vector ``p``,
-and a `well-mixed` population of agents, the probability that an agent
-encounters another agent playing the ``i``-th pure strategy is given by the
-following equation:
-
-.. math::
-
-   P_i(X,p) = \sum_{j=1}^{n}p_{j}x_{j,i}
-
-The ``m``-vector specifing the probabilities that an agent encounters another
-agent playing any one of the ``m`` pure strategies is given by the following
-matrix equation:
-
-.. math::
-
-   P(X,p) = pX
-
-The vector ``P`` is identical to a `mixed strategy`.  Therefore, the `expected
-payoff` for an agent playing the ``j``-th `mixed strategy` is given by the 
-following equation:
-
-.. math::
-
-    u(x_j,P) = \sum_{h=1}^{m}\sum_{k=1}^{m}x_{j,h}\cdot a_{h,k}\cdot P_{k} = x_jAP
-
-The ``n``-vector specifying the the `expected payoffs` for all ``n`` agent
-types is given by the following matrix equation:
-
-.. math::
-
-   U(X,p) = XApX = XAP
