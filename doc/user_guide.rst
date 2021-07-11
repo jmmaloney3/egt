@@ -694,6 +694,39 @@ The population average payout is equal to the following:
    \begin{pmatrix}1.575 \\ 3.1\end{pmatrix}
    =2.299375
 
+----------------------------------------------
+Evolutionary Games with Pseudo-pure Strategies
+----------------------------------------------
+Let :math:`\mathcal{G}` be a symmetric two-player game with :math:`\mathit{m}`
+pure strategies that is the `stage game` for an evolutionary game played by a
+population of agents playing :math:`\mathit{n}` different mixed strategies.
+
+The game can be transformed into a symmetric two-player game
+:math:`\mathcal{G}^*` with `pseudo-pure` strategies corresponding to the
+:math:`\mathit{n}` mixed strategies played by the different types of agents.
+
+Let :math:`\boldsymbol{A}^*` be the payout matrix for the transformed game
+:math:`\mathcal{G}^*`. The entry in row :math:`\mathit{i}` and column
+:math:`\mathit{j}` in matrix :math:`\boldsymbol{A}^*` is the expected payout
+when mixed-strategy profile
+:math:`\boldsymbol{\chi}=(\boldsymbol{e}_i, \boldsymbol{x}_j)` is in effect.
+
+.. math::
+
+   \mathit{a}^*_{i,j} &=
+   \mathop{\mathbb{E}}[\mathit{u}(\boldsymbol{\chi})
+   \mid
+   \boldsymbol{\chi}=(\boldsymbol{x}_i, \boldsymbol{x}_j)] \\
+   &=\sum_{h=0}^m\sum_{k=0}^m x_{i,h} \cdot a_{h,k} \cdot x_{j,k} \\
+   &=\boldsymbol{x}_i \cdot \boldsymbol{A} \cdot \boldsymbol{x}_j
+
+Given the population mixed-strategy profile :math:`\boldsymbol{X}`, the
+complete payout matrix :math:`\boldsymbol{A}^*` can be calculated as follows:
+
+.. math::
+
+   \boldsymbol{A}^* = \boldsymbol{X}\boldsymbol{A}\boldsymbol{X}
+
 ------------------------------
 Transformed Evolutionary Games
 ------------------------------
