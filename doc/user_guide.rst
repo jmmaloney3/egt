@@ -91,7 +91,7 @@ probability to all other pure strategies.
 A `mixed strategy profile` :math:`\boldsymbol{\chi}=(\boldsymbol{x}_1,
 \boldsymbol{x}_2,\dots,\boldsymbol{x}_n)` is a game configuration
 in which each player position :math:`\mathit{i}` has been assigned a mixed
-strategy :math:`\boldsymbol{x_i}`.
+strategy :math:`\boldsymbol{x}_i`.
 
 The probability that a pure strategy profile :math:`\boldsymbol{s}` will be
 played when a mixed strategy profile :math:`\boldsymbol{\chi}` is in effect
@@ -107,7 +107,7 @@ and
 
 .. math::
 
-   x_{i,s_i} = \Pr(s_i \mid \boldsymbol{x_i})
+   x_{i,s_i} = \Pr(s_i \mid \boldsymbol{x}_i)
 
 The pure-strategy payoff function :math:`\pi_i(\boldsymbol{s})` for
 a game defines the payoff for player position :math:`\mathit{i}` when a
@@ -143,7 +143,7 @@ in the previous example:
    \boldsymbol{x_1}&=(0.65,0.35) \\
    \boldsymbol{x_2}&=(0.25,0.15,0.6) \\
    \boldsymbol{x_3}&=(0.25,0.05,0.2,0.5) \\
-   \boldsymbol{\chi}&=(\boldsymbol{x_1},\boldsymbol{x_2},\boldsymbol{x_3})
+   \boldsymbol{\chi}&=(\boldsymbol{x}_1,\boldsymbol{x}_2,\boldsymbol{x}_3)
 
 In this case, the probability that the example pure strategy profile
 :math:`\boldsymbol{s}=(1,3,4)` will be used is the following:
@@ -242,18 +242,18 @@ pure-strategy payoffs for the two player positions are the following:
    \pi_2(\boldsymbol{s}) = b_{1,3} = 0
 
 Given the mixed-strategy profile
-:math:`\boldsymbol{\chi}=(\boldsymbol{x_1},\boldsymbol{x_2})` where
+:math:`\boldsymbol{\chi}=(\boldsymbol{x}_1,\boldsymbol{x}_2)` where
 
 .. math::
 
-   \boldsymbol{x_1}&=(0.65,0.35) \\
-   \boldsymbol{x_2}&=(0.25,0.15,0.6)
+   \boldsymbol{x}_1&=(0.65,0.35) \\
+   \boldsymbol{x}_2&=(0.25,0.15,0.6)
 
 the mixed-strategy payouts for the two player positions are the following:
 
 .. math::
 
-   u_1(\boldsymbol{\chi})=&\boldsymbol{x_1}\boldsymbol{A}\boldsymbol{x_2} \\
+   u_1(\boldsymbol{\chi})=&\boldsymbol{x}_1\boldsymbol{A}\boldsymbol{x}_2 \\
    =&(0.65 \cdot 1 \cdot 0.25) +
      (0.65 \cdot 2 \cdot 0.15) + 
      (0.65 \cdot 5 \cdot 0.6) + \\
@@ -262,7 +262,7 @@ the mixed-strategy payouts for the two player positions are the following:
      (0.35 \cdot 0 \cdot 0.6) \\
    =&2.78
 
-   u_2(\boldsymbol{\chi})=&\boldsymbol{x_1}\boldsymbol{B}\boldsymbol{x_2} \\
+   u_2(\boldsymbol{\chi})=&\boldsymbol{x}_1\boldsymbol{B}\boldsymbol{x}_2 \\
    =&(0.65 \cdot 4 \cdot 0.25) +
      (0.65 \cdot 3 \cdot 0.15) + 
      (0.65 \cdot 0 \cdot 0.6) + \\
@@ -359,25 +359,25 @@ pure-strategy payoffs for the two strategies are the following:
    \pi_2(\boldsymbol{s}) = a_{2,1} = 5
 
 Given the mixed-strategy profile
-:math:`\boldsymbol{\chi}=(\boldsymbol{x_1},\boldsymbol{x_2})` where
+:math:`\boldsymbol{\chi}=(\boldsymbol{x}_1,\boldsymbol{x}_2)` where
 
 .. math::
 
-   \boldsymbol{x_1}&=(0.65,0.35) \\
-   \boldsymbol{x_2}&=(0.25,0.75)
+   \boldsymbol{x}_1&=(0.65,0.35) \\
+   \boldsymbol{x}_2&=(0.25,0.75)
 
 the mixed-strategy payouts for the two strategies are the following:
 
 .. math::
 
-   u_1(\boldsymbol{\chi})=&\boldsymbol{x_1}\boldsymbol{A}\boldsymbol{x_2} \\
+   u_1(\boldsymbol{\chi})=&\boldsymbol{x}_1\boldsymbol{A}\boldsymbol{x}_2 \\
    =&(0.65 \cdot 3 \cdot 0.25) +
      (0.65 \cdot 0 \cdot 0.75) + \\
    & (0.35 \cdot 5 \cdot 0.25) +
      (0.35 \cdot 1 \cdot 0.75)   \\
    =&1.15
 
-   u_2(\boldsymbol{\chi})=&\boldsymbol{x_1}\boldsymbol{A}^T\boldsymbol{x_2} \\
+   u_2(\boldsymbol{\chi})=&\boldsymbol{x}_1\boldsymbol{A}^T\boldsymbol{x}_2 \\
    =&(0.65 \cdot 3 \cdot 0.25) +
      (0.65 \cdot 5 \cdot 0.75) + \\
    & (0.35 \cdot 0 \cdot 0.25) +
@@ -707,9 +707,9 @@ The game can be transformed into a symmetric two-player game
 
 Let :math:`\boldsymbol{A}^*` be the payout matrix for the transformed game
 :math:`\mathcal{G}^*`. The entry in row :math:`\mathit{i}` and column
-:math:`\mathit{j}` in matrix :math:`\boldsymbol{A}^*` is the expected payout
+:math:`\mathit{j}` of matrix :math:`\boldsymbol{A}^*` is the expected payout
 when mixed-strategy profile
-:math:`\boldsymbol{\chi}=(\boldsymbol{e}_i, \boldsymbol{x}_j)` is in effect.
+:math:`\boldsymbol{\chi}=(\boldsymbol{x}_i, \boldsymbol{x}_j)` is in effect.
 
 .. math::
 
@@ -718,7 +718,7 @@ when mixed-strategy profile
    \mid
    \boldsymbol{\chi}=(\boldsymbol{x}_i, \boldsymbol{x}_j)] \\
    &=\sum_{h=0}^m\sum_{k=0}^m x_{i,h} \cdot a_{h,k} \cdot x_{j,k} \\
-   &=\boldsymbol{x}_i \cdot \boldsymbol{A} \cdot \boldsymbol{x}_j
+   &=\boldsymbol{x}_i \boldsymbol{A} \boldsymbol{x}_j
 
 Given the population mixed-strategy profile :math:`\boldsymbol{X}`, the
 complete payout matrix :math:`\boldsymbol{A}^*` can be calculated as follows:
@@ -726,6 +726,82 @@ complete payout matrix :math:`\boldsymbol{A}^*` can be calculated as follows:
 .. math::
 
    \boldsymbol{A}^* = \boldsymbol{X}\boldsymbol{A}\boldsymbol{X}
+
+Given payout matrix :math:`\boldsymbol{A}^*`, the set of mixed strategies can
+be treated as `pseudo-pure strategies` and the equations for `evolutionary
+games with pure strategies` can be used to calculate the expected payouts
+for each mixed-strategy type and the population average payout.
+
+A `population pseudo-pure strategy profile` is a
+:math:`\mathit{n} \times \mathit{n}` identity matrix :math:`\boldsymbol{S}^*`
+whose columns are the :math:`\mathit{n}` pseudo-pure strategy vectors
+:math:`\boldsymbol{e}_i^*` corresponding to the :math:`\mathit{n}` mixed
+strategies played by the agents in the population.
+
+.. math::
+   \boldsymbol{S}^*=
+   (\boldsymbol{e}_1^* \hdots \boldsymbol{e}_h^* \hdots \boldsymbol{e}_m^*)=
+   \begin{pmatrix}
+   1 & \hdots & 0 & \hdots & 0 \\
+   \vdots  & \vdots & \vdots  & \vdots & \vdots  \\
+   0 & \hdots & 1 & \hdots & 0 \\
+   \vdots  & \vdots & \vdots  & \vdots & \vdots  \\
+   0 & \hdots & 0 & \hdots & 1 \\
+   \end{pmatrix}
+
+Given mixed-strategy profile
+:math:`\boldsymbol{\chi}=(\boldsymbol{x}_i,\boldsymbol{x}_j)`, the equivalent
+`pseudo-pure strategy profile` is :math:`\boldsymbol{s}^*=(i,j)` and the
+expected payout for mixed strategy :math:`\boldsymbol{x}_i` is the following:
+
+.. math::
+
+   \pi(\boldsymbol{s}^*) =
+   \boldsymbol{e}_i^* \boldsymbol{A}^* \boldsymbol{e}_j^* = 
+   \mathit{a}_{i,j}^*
+
+In the context of the transformed game :math:`\mathcal{G}^*`, the
+`pseudo-pure strategy state` vector is equivalent to the
+mixed-strategy population state vector :math:`\boldsymbol{\sigma}`.
+
+The expected payout for an agent playing mixed strategy
+:math:`\boldsymbol{x}_i` against an agent that is randomly selected from a
+population in state :math:`\boldsymbol{\sigma}` is equivalent to the expected
+payout for the same agent playing against an agent that is using population
+mixed-strategy :math:`\boldsymbol{\sigma}`.
+
+.. math::
+   u_{\boldsymbol{x}_i} =\boldsymbol{e}_i^*\boldsymbol{A}^*\boldsymbol{\sigma}
+
+Replacing the vector :math:`\boldsymbol{e}_i^*` with the population
+pseudo-pure strategy profile :math:`\boldsymbol{S}^*` in the previous equation
+provides a matrix equation that generates the vector :math:`\boldsymbol{u}` of
+expected payouts for all mixed strategy types:
+
+.. math::
+
+   \boldsymbol{u} = (u_1, u_2, \dots, u_n) = 
+   \boldsymbol{S}^*\boldsymbol{A}^*\boldsymbol{\sigma}
+
+The `population average payout` is the expected payout earned by
+one randomly selected agent playing against a second randomly selected agent.
+Since two agents selected randomly from the population to play a game can
+equivelently be treated as two agents that are both playing mixed-strategy
+:math:`\boldsymbol{\sigma}`, the population average payout is equal to the
+mixed-strategy payout when mixed strategy profile
+:math:`(\boldsymbol{\sigma},\boldsymbol{\sigma})` is in effect.
+
+.. math::
+
+   \bar{u}_{\boldsymbol{\sigma}}=
+   \mathop{\mathbb{E}}\limits_{\boldsymbol{a} \in \mathcal{A}}
+   [\mathit{u}_a \mid \boldsymbol{\sigma}]=
+   \boldsymbol{\sigma}\boldsymbol{A}^*\boldsymbol{\sigma}
+
+Example
+-------
+
+TBD
 
 ------------------------------
 Transformed Evolutionary Games
@@ -769,15 +845,16 @@ state vector :math:`\boldsymbol{\sigma}`, defines the population mixed-strategy
 for position two.
 
 Given payout matrix :math:`\boldsymbol{A}^*`, the expected payout for an agent
-playing mixed strategy :math:`\boldsymbol{x}_k` against an agent that is randomly
-selected from a population in state :math:`\boldsymbol{\sigma}` is equivalent to
-the expected payout for the same agent playing against an agent that is using
-population mixed-strategy :math:`\boldsymbol{\sigma}`.
+playing mixed strategy :math:`\boldsymbol{x}_i` against an agent that is
+randomly selected from a population in state :math:`\boldsymbol{\sigma}` is
+equivalent to the expected payout for the same agent playing against an agent
+that is using population mixed-strategy
+:math:`\boldsymbol{x}_{\boldsymbol{\sigma}}`.
 
 .. math::
 
    u_{\boldsymbol{x}_k} =
-   \boldsymbol{x}_k\boldsymbol{A}^*\boldsymbol{\sigma}
+   \boldsymbol{x}_k\boldsymbol{A}\boldsymbol{x}_{\boldsymbol{\sigma}}
 
 Replacing the vector :math:`\boldsymbol{x}_k` with the population
 mixed-strategy profile matrix :math:`\boldsymbol{X}` in the previous equation
