@@ -676,7 +676,7 @@ The expected payouts for the three mixed-strategy types are the following:
    =
    \begin{pmatrix}0.75 & 0.25\end{pmatrix}
    \begin{pmatrix}1.575 \\ 3.1\end{pmatrix}
-   =1.95624
+   =1.95625
 
 The population average payout is equal to the following:
 
@@ -705,10 +705,10 @@ The game can be transformed into a symmetric two-player game
 :math:`\mathcal{G}^*` with `pseudo-pure` strategies corresponding to the
 :math:`\mathit{n}` mixed strategies played by the different types of agents.
 
-Let :math:`\boldsymbol{A}^*` be the payout matrix for the transformed game
-:math:`\mathcal{G}^*`. The entry in row :math:`\mathit{i}` and column
-:math:`\mathit{j}` of matrix :math:`\boldsymbol{A}^*` is the expected payout
-when mixed-strategy profile
+Let :math:`\boldsymbol{A}^*` be the `pseudo-pure strategy payout matrix` for
+the transformed game :math:`\mathcal{G}^*`. The entry in row
+:math:`\mathit{i}` and column :math:`\mathit{j}` of matrix
+:math:`\boldsymbol{A}^*` is the expected payout when mixed-strategy profile
 :math:`\boldsymbol{\chi}=(\boldsymbol{x}_i, \boldsymbol{x}_j)` is in effect.
 
 .. math::
@@ -725,7 +725,7 @@ complete payout matrix :math:`\boldsymbol{A}^*` can be calculated as follows:
 
 .. math::
 
-   \boldsymbol{A}^* = \boldsymbol{X}\boldsymbol{A}\boldsymbol{X}
+   \boldsymbol{A}^* = \boldsymbol{X}^T\boldsymbol{A}\boldsymbol{X}
 
 Given payout matrix :math:`\boldsymbol{A}^*`, the set of mixed strategies can
 be treated as `pseudo-pure strategies` and the equations for `evolutionary
@@ -756,16 +756,18 @@ expected payout for mixed strategy :math:`\boldsymbol{x}_i` is the following:
 
 .. math::
 
-   \pi(\boldsymbol{s}^*) =
+   \pi_i^*(\boldsymbol{s}^*) =
    \boldsymbol{e}_i^* \boldsymbol{A}^* \boldsymbol{e}_j^* = 
-   \mathit{a}_{i,j}^*
+   \mathit{a}_{i,j}^* =
+   \boldsymbol{x}_i \boldsymbol{A} \boldsymbol{x}_j =
+   u_i(\boldsymbol{\chi})
 
 In the context of the transformed game :math:`\mathcal{G}^*`, the
-`pseudo-pure strategy state` vector is equivalent to the
+`pseudo-pure strategy population state` vector is equivalent to the
 mixed-strategy population state vector :math:`\boldsymbol{\sigma}`.
 
-The expected payout for an agent playing mixed strategy
-:math:`\boldsymbol{x}_i` against an agent that is randomly selected from a
+The expected payout for an agent playing pseudo-pure strategy
+:math:`\boldsymbol{e}_i^*` against an agent that is randomly selected from a
 population in state :math:`\boldsymbol{\sigma}` is equivalent to the expected
 payout for the same agent playing against an agent that is using population
 mixed-strategy :math:`\boldsymbol{\sigma}`.
@@ -776,7 +778,7 @@ mixed-strategy :math:`\boldsymbol{\sigma}`.
 Replacing the vector :math:`\boldsymbol{e}_i^*` with the population
 pseudo-pure strategy profile :math:`\boldsymbol{S}^*` in the previous equation
 provides a matrix equation that generates the vector :math:`\boldsymbol{u}` of
-expected payouts for all mixed strategy types:
+expected payouts for all pseudo-pure strategy types:
 
 .. math::
 
@@ -801,7 +803,76 @@ mixed-strategy payout when mixed strategy profile
 Example
 -------
 
-TBD
+Consider the previous example where a population with three different agent
+types is playing the prisoner's dilemma game.  Transforming that evolutionary
+game into an `evolutionary game with pseudo-pure strategies` results in the
+following pseudo-pure strategy payout matrix :math:`\boldsymbol{A}^*`:
+
+.. math::
+
+   \boldsymbol{A}^* &= \boldsymbol{X}^T\boldsymbol{A}\boldsymbol{X} \\
+   &=
+   \begin{pmatrix}0.25 & 0.75 \\ 0.5 & 0.5 \\ 0.75 & 0.25\end{pmatrix}
+   \begin{pmatrix}3 & 0 \\ 5 & 1\end{pmatrix}
+   \begin{pmatrix}0.25 & 0.5 & 0.75 \\ 0.75 & 0.5 & 0.25\end{pmatrix} \\
+   &=
+   \begin{pmatrix}1.6875 & 2.6250 & 3.5625 \\
+                  1.3750 & 2.2500 & 3.1250  \\
+                  1.0625 & 1.8750 & 2.6875\end{pmatrix}
+
+The expected payouts for the three mixed-strategy types are the following:
+
+.. math::
+
+   u_1 =& \boldsymbol{e}_1^*\boldsymbol{A}^*\boldsymbol{\sigma} \\
+   =&
+   \begin{pmatrix}1 & 0 & 0\end{pmatrix}
+   \begin{pmatrix}1.6875 & 2.6250 & 3.5625 \\
+                  1.3750 & 2.2500 & 3.1250  \\
+                  1.0625 & 1.8750 & 2.6875\end{pmatrix}
+   \begin{pmatrix}0.2 \\ 0.5 \\ 0.3\end{pmatrix} \\
+   =&
+   2.71875
+
+   u_2 =& \boldsymbol{e}_2^*\boldsymbol{A}^*\boldsymbol{\sigma} \\
+   =&
+   \begin{pmatrix}0 & 1 & 0\end{pmatrix}
+   \begin{pmatrix}1.6875 & 2.6250 & 3.5625 \\
+                  1.3750 & 2.2500 & 3.1250  \\
+                  1.0625 & 1.8750 & 2.6875\end{pmatrix}
+   \begin{pmatrix}0.2 \\ 0.5 \\ 0.3\end{pmatrix} \\
+   =&
+   2.3375
+
+   u_3 =& \boldsymbol{e}_3^*\boldsymbol{A}^*\boldsymbol{\sigma} \\
+   =&
+   \begin{pmatrix}0 & 0 & 1\end{pmatrix}
+   \begin{pmatrix}1.6875 & 2.6250 & 3.5625 \\
+                  1.3750 & 2.2500 & 3.1250  \\
+                  1.0625 & 1.8750 & 2.6875\end{pmatrix}
+   \begin{pmatrix}0.2 \\ 0.5 \\ 0.3\end{pmatrix} \\
+   =&
+   1.95625
+
+The population average payout is equal to the following:
+
+.. math::
+
+   \bar{u}_{\boldsymbol{\sigma}}=&
+   \mathop{\mathbb{E}}\limits_{\boldsymbol{a} \in \mathcal{A}}
+   [\mathit{u}_a \mid \boldsymbol{\sigma}]=
+   \boldsymbol{\sigma}\boldsymbol{A}^*\boldsymbol{\sigma} \\
+   =&
+   \begin{pmatrix}0.2 & 0.5 & 0.3\end{pmatrix}
+   \begin{pmatrix}1.6875 & 2.6250 & 3.5625 \\
+                  1.3750 & 2.2500 & 3.1250  \\
+                  1.0625 & 1.8750 & 2.6875\end{pmatrix}
+   \begin{pmatrix}0.2 \\ 0.5 \\ 0.3\end{pmatrix} \\
+   =&
+   2.299375
+
+As expected, these results are identical to the results produced in the
+previous example.
 
 ------------------------------
 Transformed Evolutionary Games
