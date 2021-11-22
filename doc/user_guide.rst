@@ -47,6 +47,10 @@ in this user guide.
    * - .. centered:: :math:`\boldsymbol{x}_i`
      - .. centered:: Vector
      - A `mixed strategy` for player positon :math:`\mathit{i}`.
+   * - .. centered:: :math:`\boldsymbol{e}_{i,h}`
+     - .. centered:: Vector
+     - The `mixed strategy` for player positon :math:`\mathit{i}` that always
+       plays `pure strategy` :math:`\mathit{h} \in \mathcal{S}_i`.
    * - .. centered:: :math:`x_{i,h}`
      - .. centered:: Scalar
      - The component of `mixed strategy` :math:`\boldsymbol{x}_i`
