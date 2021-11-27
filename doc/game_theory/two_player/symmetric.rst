@@ -1,4 +1,4 @@
-.. title:: Symmetric 2-Player Normal Form Games
+.. title:: Symmetric Games
 
 .. _symmetric_two_player:
 

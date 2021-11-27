@@ -1,4 +1,4 @@
-.. title:: Normal Form Games with Pure Strategies
+.. title:: Games with Pure Strategies
 
 .. _pure_strategies:
 

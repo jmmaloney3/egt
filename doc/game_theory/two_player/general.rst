@@ -1,4 +1,4 @@
-.. title:: General 2-Player Normal Form Games
+.. title:: General Games
 
 .. _general_two_player:
 

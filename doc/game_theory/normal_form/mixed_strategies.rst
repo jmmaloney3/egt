@@ -1,4 +1,4 @@
-.. title:: Normal Form Games with Mixed Strategies
+.. title:: Games with Mixed Strategies
 
 .. _mixed_strategies:
 
