@@ -1,6 +1,6 @@
 .. title:: Notation
 
-.. _notation:
+.. _normal_form_notation:
 
 Notation
 ========

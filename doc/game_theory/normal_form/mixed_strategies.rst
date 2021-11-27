@@ -1,6 +1,6 @@
 .. title:: Games with Mixed Strategies
 
-.. _mixed_strategies:
+.. _normal_form_mixed_strategies:
 
 Normal Form Games with Mixed Strategies
 =======================================

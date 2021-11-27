@@ -1,6 +1,6 @@
 .. title:: Games with Pure Strategies
 
-.. _pure_strategies:
+.. _normal_form_pure_strategies:
 
 Normal Form Games with Pure Strategies
 ======================================

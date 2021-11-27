@@ -1,6 +1,6 @@
 .. title:: General Games
 
-.. _general_two_player:
+.. _two_player_general:
 
 General 2-Player Normal Form Games
 ==================================

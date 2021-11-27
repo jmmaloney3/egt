@@ -1,6 +1,6 @@
 .. title:: Notation
 
-.. _notation:
+.. _two_player_notation:
 
 Notation
 ========
