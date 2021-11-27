@@ -10,3 +10,5 @@ Evolutionary Games
    notation
    pure_strategies
    mixed_strategies
+   pseudo_pure_strategies
+   transformed
