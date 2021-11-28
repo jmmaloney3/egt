@@ -76,8 +76,8 @@ The `combined mixed-strategy payoff function`
 :math:`\boldsymbol{u}(\boldsymbol{\chi})=
 (u_1(\boldsymbol{\chi}),u_2(\boldsymbol{\chi}),
 \dots,u_n(\boldsymbol{\chi})`
-provides a vector representing the payoffs for each player position for
-mixed-strategy profile :math:`\boldsymbol{\chi}`.
+provides a vector representing the `expected payoffs` for each player position
+for mixed-strategy profile :math:`\boldsymbol{\chi}`.
 
 Example
 -------
