@@ -1,6 +1,6 @@
 .. title:: Evolutionary Games
 
-.. _evolutionary:
+.. _evo_games:
 
 Evolutionary Games
 ==================
