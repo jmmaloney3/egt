@@ -13,3 +13,4 @@ A brief overview of the fundamentals of game theory with a focus on
    normal_form/index
    two_player/index
    evo_games/index
+   evo_dynamics/index
