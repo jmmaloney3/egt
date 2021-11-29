@@ -1,6 +1,6 @@
 .. title:: Notation
 
-.. _evolutionary_notation:
+.. _evo_games_notation:
 
 Notation
 ========

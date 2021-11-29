@@ -1,6 +1,6 @@
 .. title:: Transformed Games
 
-.. _evolutionary_transformed:
+.. _evo_games_transformed:
 
 Transformed Evolutionary Games
 ==============================

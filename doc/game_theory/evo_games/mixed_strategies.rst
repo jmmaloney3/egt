@@ -1,6 +1,6 @@
 .. title:: Games with Mixed Strategies
 
-.. _evolutionary_mixed_strategies:
+.. _evo_games_mixed_strategies:
 
 Evolutionary Games with Mixed Strategies
 ========================================

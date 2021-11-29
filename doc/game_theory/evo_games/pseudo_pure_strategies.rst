@@ -1,6 +1,6 @@
 .. title:: Games with Pseudo-pure Strategies
 
-.. _evolutionary_pseudo_pure_strategies:
+.. _evo_games_pseudo_pure_strategies:
 
 Evolutionary Games with Pseudo-pure Strategies
 ==============================================

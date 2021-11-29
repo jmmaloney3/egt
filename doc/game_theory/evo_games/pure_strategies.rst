@@ -1,6 +1,6 @@
 .. title:: Games with Pure Strategies
 
-.. _evolutionary_pure_strategies:
+.. _evo_games_pure_strategies:
 
 Evolutionary Games with Pure Strategies
 =======================================
