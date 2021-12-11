@@ -17,8 +17,10 @@ This is the probability that player position :math:`\mathit{i}` plays
 pure strategy :math:`\mathit{h}` when mixed strategy :math:`\boldsymbol{x}_i`
 is used.
 
+.. _mixed_strategy_rep_for_pure_strategy:
+
 The pure strategy :math:`\mathit{h}` for player position :math:`\mathit{i}`
-can be represented as a mixed stratgy :math:`\boldsymbol{e}_{i,h}` that
+can be represented as a mixed strategy :math:`\boldsymbol{e}_{i,h}` that
 assigns probability one to pure strategy :math:`\mathit{h}` and zero
 probability to all other pure strategies.
 
@@ -27,14 +29,17 @@ probability to all other pure strategies.
    \Pr(\mathit{h} &\mid \boldsymbol{e}_{i,h}) = 1 \\
    \Pr(\mathit{k} &\mid \boldsymbol{e}_{i,h} \land \mathit{k}\neq\mathit{h})=0
 
+.. _mixed_strategy_profile:
+
 A `mixed strategy profile` :math:`\boldsymbol{\chi}=(\boldsymbol{x}_1,
 \boldsymbol{x}_2,\dots,\boldsymbol{x}_n)` is a game configuration
 in which each player position :math:`\mathit{i}` has been assigned a mixed
 strategy :math:`\boldsymbol{x}_i`.
 
-The probability that a pure strategy profile :math:`\boldsymbol{s}` will be
-played when a mixed strategy profile :math:`\boldsymbol{\chi}` is in effect
-is equal to the following:
+The probability that
+:ref:`pure strategy profile <pure_strategy_profile>` :math:`\boldsymbol{s}`
+will be played when mixed strategy profile :math:`\boldsymbol{\chi}` is
+in effect is equal to the following:
 
 .. math::
 
@@ -48,7 +53,8 @@ and
 
    x_{i,s_i} = \Pr(s_i \mid \boldsymbol{x}_i)
 
-The pure-strategy payoff function :math:`\pi_i(\boldsymbol{s})` for
+The :ref:`pure-strategy payoff function <pure_strategy_payoff_function>`
+:math:`\pi_i(\boldsymbol{s})` for
 a game defines the payoff for player position :math:`\mathit{i}` when a
 pure strategy profile :math:`\boldsymbol{s} \in \mathcal{S}` is in effect.
 A mixed strategy profile :math:`\boldsymbol{\chi}` defines the probabilty
@@ -56,6 +62,8 @@ that each pure strategy profile :math:`\boldsymbol{s}` is in effect.
 Therefore, the value of the pure-strategy payoff function
 :math:`\pi_i(\boldsymbol{s})` cannot be deteremined when mixed strategy
 :math:`\boldsymbol{\chi}` is in effect.
+
+.. _mixed_strategy_payoff_function:
 
 The `mixed-strategy payoff function` :math:`u_i(\boldsymbol{\chi})` for
 player :math:`\mathit{i}` is defined as the `expected value` over all
@@ -71,6 +79,8 @@ strategy profile :math:`\boldsymbol{\chi}` is in effect:
    \sum_{\boldsymbol{s} \in \mathcal{S}}
    \Pr(\boldsymbol{s}\mid\boldsymbol{\chi})
    \pi_i(\boldsymbol{s})
+
+.. _combined_mixed_strategy_payoff_function:
 
 The `combined mixed-strategy payoff function`
 :math:`\boldsymbol{u}(\boldsymbol{\chi})=

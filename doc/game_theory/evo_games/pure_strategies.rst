@@ -50,7 +50,12 @@ Given payout matrix :math:`\boldsymbol{A}`, the expected payout for an agent
 playing pure strategy :math:`\boldsymbol{e}_h` against an agent that is
 randomly selected from a population in state :math:`\boldsymbol{\sigma}` is
 equivalent to the expected payout for the same agent playing against an agent
-that is using mixed-strategy :math:`\boldsymbol{\sigma}`.
+that is using mixed-strategy :math:`\boldsymbol{\sigma}`.  The
+:ref:`two player mixed strategy payoff function
+<mixed_strategy_payoff_function_two_player_general>`
+:math:`u_h(\boldsymbol{\chi})` where
+:math:`\boldsymbol{\chi}=(\boldsymbol{e}_h,\boldsymbol{\sigma})`
+can be used to find this expected payout:
 
 .. math::
 
@@ -58,12 +63,15 @@ that is using mixed-strategy :math:`\boldsymbol{\sigma}`.
 
 Replacing the vector :math:`\boldsymbol{e}_h` with the population pure-strategy
 profile matrix :math:`\boldsymbol{S}` in the previous equation provides a
-matrix equation that generates the vector :math:`\boldsymbol{u}` of expected
+matrix equation that defines the
+:ref:`combined mixed strategy payoff function
+<combined_mixed_strategy_payoff_function>`
+:math:`\boldsymbol{u}` of expected
 payouts for all pure strategy types:
 
 .. math::
 
-   \boldsymbol{u} = (u_1, u_2, \dots, u_m) = 
+   \boldsymbol{u} = (u_1, u_2, \dots, u_h, \dots, u_m) =
    \boldsymbol{S}\boldsymbol{A}\boldsymbol{\sigma}
 
 The `population average payout` is the expected payout earned by

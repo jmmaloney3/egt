@@ -9,25 +9,25 @@ Let :math:`\mathcal{I}=\{1,2,\dots,n\}` be the set of `player positions` for a
 `normal form` game.
 
 Each player position :math:`\mathit{i}` has a set
-:math:`\mathcal{S}_i=\{1,2,\dots,m_i\}` of `pure strategies`.  A `pure-strategy
-profile`
+:math:`\mathcal{S}_i=\{1,2,\dots,m_i\}` of `pure strategies`.
 
-.. math::
+.. _pure_strategy_profile:
 
-   \boldsymbol{s}=(s_1,s_2,\dots,s_n)
-
+A `pure-strategy profile` :math:`\boldsymbol{s}=(s_1,s_2,\dots,s_n)`
 where :math:`s_i \in \mathcal{S}_i` represents a game configuration in which each
 player position :math:`\mathit{i}` has chosen (or been assigned) a specific
 pure strategy.  The set :math:`\mathcal{S}` of all possible pure-strategy
 profiles is the `pure-strategy space` of the game.
+
+.. _pure_strategy_payoff_function:
 
 A `pure-strategy payoff function` :math:`\pi_i(\boldsymbol{s})`
 defines the payoff for player :math:`\mathit{i}` in the game configuration
 specified by pure-strategy profile :math:`\boldsymbol{s}`.  The `combined
 pure-strategy payoff function` :math:`\boldsymbol{\pi}(\boldsymbol{s})=
 (\pi_1(\boldsymbol{s}),\pi_2(\boldsymbol{s}),\dots,\pi_n(\boldsymbol{s}))`
-provides a vector representing the payoffs for each player position for
-pure-strategy profile :math:`\boldsymbol{s}`.
+provides a vector representing the payoffs for each player position when
+pure-strategy profile :math:`\boldsymbol{s}` is in effect.
 
 Given these definitions, a game in normal form can be represented as the tuplet
 :math:`\mathcal{G}=(\mathcal{I},\mathcal{S},\boldsymbol{\pi})`.

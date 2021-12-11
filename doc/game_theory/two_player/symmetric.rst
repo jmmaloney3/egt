@@ -5,7 +5,8 @@
 Symmetric 2-Player Normal Form Games
 ====================================
 
-In the special case of a `symmetric` two-player normal form game, each player
+In the special case of a `symmetric`
+:ref:`two-player normal form game <two_player_general>`, each player
 position has :math:`m` pure strategies and the pair of :math:`m \times m`
 payoff matrices :math:`(\boldsymbol{A},\boldsymbol{B})` meets the following
 aditional requirement:
@@ -16,12 +17,13 @@ aditional requirement:
 
 This implies that the payoff accrued by a pure strategy is independent of the
 player position that plays that strategy.   Therefore, for all
-:math:`h,k \in \mathcal{S}=\mathcal{S}_1=\mathcal{S}_2`, given two pure
-strategy profiles :math:`\boldsymbol{s}_{h,k}=(h,k)` and
+:math:`h,k \in \mathcal{S}=\mathcal{S}_1=\mathcal{S}_2`, given two
+:ref:`pure strategy profiles <pure_strategy_profile>`
+:math:`\boldsymbol{s}_{h,k}=(h,k)` and
 :math:`\boldsymbol{s}_{k,h}=(k,h)` that are identical except that the pure
-strategies assigned to each player position have been swapped, the pure
-strategy payoff functions for the two player positions satisfy the following
-conditions:
+strategies assigned to each player position have been swapped, the
+:ref:`pure-strategy payoff functions <pure_strategy_payoff_function>`
+for the two player positions satisfy the following conditions:
 
 .. math::
 
@@ -42,8 +44,15 @@ Note that the order of the indices used to select the element from matrix
 :math:`\boldsymbol{A}` for :math:`\pi_2` is the reverse of the order of the
 indices used for :math:`\pi_1`.
 
+Using the :ref:`mixed strategy representation for pure strategies 
+<mixed_strategy_rep_for_pure_strategy>`,
+the :ref:`mixed strategy profile <mixed_strategy_profile>`...
+
+TBD
+
 Using the definitions given above for the two pure strategy payoff functions
-for a symmetric two player game, the two mixed strategy payoff functions
+for a symmetric two player game, the two
+:ref:`mixed strategy payoff functions <mixed_strategy_payoff_function>`
 :math:`u_1(\boldsymbol{\chi}_{\boldsymbol{x},\boldsymbol{y}})` and
 :math:`u_2(\boldsymbol{\chi}_{\boldsymbol{x},\boldsymbol{y}})` can be
 defined as follows:

@@ -11,9 +11,12 @@ strategies, the payoff functions can be defined using a pair of
 :math:`m_1 \times m_2` `payoff matrices`
 :math:`(\boldsymbol{A},\boldsymbol{B})`.
 
-For all pure strategy profiles :math:`\boldsymbol{s}_{h,k}=(h,k)` where 
+For all
+:ref:`pure strategy profiles <pure_strategy_profile>`
+:math:`\boldsymbol{s}_{h,k}=(h,k)` where
 :math:`h \in \mathcal{S}_1` and :math:`k \in \mathcal{S}_2`, the two
-pure strategy payoff functions :math:`\pi_1(\boldsymbol{s}_{h,k})` and
+:ref:`pure-strategy payoff functions <pure_strategy_payoff_function>`
+:math:`\pi_1(\boldsymbol{s}_{h,k})` and
 :math:`\pi_2(\boldsymbol{s}_{h,k})` can be defined using the two matrices
 :math:`\boldsymbol{A}` and :math:`\boldsymbol{B}` as follows:
 
@@ -26,14 +29,31 @@ Note that a row in either matrix always corresponds to a pure strategy for
 player position one and a column always corresponds to a pure strategy for
 player position two.
 
-For all mixed-strategy profiles
+Using the :ref:`mixed strategy representation for pure strategies
+<mixed_strategy_rep_for_pure_strategy>`, the two pure-strategy payoff
+functions :math:`\pi_1(\boldsymbol{s}_{h,k})` and
+:math:`\pi_2(\boldsymbol{s}_{h,k})` can be defined using the following
+matrix equations:
+
+.. math::
+
+  \pi_1(\boldsymbol{s}_{h,k})=
+  \boldsymbol{e}_{1,h}\boldsymbol{A}\boldsymbol{e}_{2,k} \\
+  \pi_2(\boldsymbol{s}_{h,k})=
+  \boldsymbol{e}_{1,h}\boldsymbol{B}\boldsymbol{e}_{2,k}
+
+.. _mixed_strategy_payoff_function_two_player_general:
+
+For all :ref:`mixed strategy profiles <mixed_strategy_profile>`
 :math:`\boldsymbol{\chi}_{\boldsymbol{x},\boldsymbol{y}}=
 (\boldsymbol{x},\boldsymbol{y})` where :math:`\boldsymbol{x}` is a mixed
-stratgy for player position one and :math:`\boldsymbol{y}` is a mixed strategy
-for player position two, the two mixed strategy payoff functions
+strategy for player position one and :math:`\boldsymbol{y}` is a mixed strategy
+for player position two, the two
+:ref:`mixed strategy payoff functions <mixed_strategy_payoff_function>`
 :math:`u_1(\boldsymbol{\chi}_{\boldsymbol{x},\boldsymbol{y}})` and
-:math:`u_2(\boldsymbol{\chi}_{\boldsymbol{x},\boldsymbol{y}})` can also
-be defined using the two matrices as follows:
+:math:`u_2(\boldsymbol{\chi}_{\boldsymbol{x},\boldsymbol{y}})` can
+be defined using the `payoff matrices`
+:math:`(\boldsymbol{A},\boldsymbol{B})` as follows:
 
 .. math::
 
